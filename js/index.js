@@ -11,18 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
 });
 
-<<<<<<< HEAD
-const gallery = []
-
-function displayContinents(continents) {
-    for(let c of continents) {
-        gallery.push(c);
-    }
-    console.log(gallery);
-}
-
-   
-=======
 const gallery = [];
 
 
@@ -50,4 +38,3 @@ function displayContinents(continents) {
         array = d;
     }
 */
->>>>>>> 09e99d80ac697e999707c862592cc18541986947
