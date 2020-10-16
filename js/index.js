@@ -14,14 +14,21 @@ document.addEventListener("DOMContentLoaded", function() {
     
 });
 
+const gallery = [];
 
 
 function displayContinents(continents) {
+    for(let c of continents){
+        gallery.push(c);
+    }
+}
+
+/*
     const list = document.querySelector('#listOfGalleries ul');
    
     for (let c of continents) {
-        
-        //console.log(c.GalleryName);
+        array += c;
+        console.log(array.GalleryName);
        
     const item = document.createElement('li');
     item.textContent = c.GalleryName;
@@ -33,6 +40,4 @@ function displayContinents(continents) {
     for(let d of data){
         array = d;
     }
-}
-
-   
+*/
