@@ -9,9 +9,12 @@ document.addEventListener("DOMContentLoaded", function() {
     .then( data => { displayContinents(data) } )
     .catch(error => console.error(error)); 
     
-});
+
 
 const gallery = [];
+
+
+
 
 
 function displayContinents(continents) {
@@ -20,6 +23,25 @@ function displayContinents(continents) {
     }
 }
 
+
+
+createGalleryList(gallery);
+
+function createGalleryList(gallery){
+    const list = document.querySelector('#listOfGalleries ul');
+    console.log(gallery);
+    for(let i = 0; i < 10; i++) {
+        console.log(gallery[i] );
+    }
+    // for(let g of gallery){
+    //      let item = document.createElement('li');
+    //      item.textContent = g.GalleryName;
+    //     console.log(g);
+    //      list.appendChild(item);
+    //      console.log(item);
+    // }
+}
+});
 /*
     const list = document.querySelector('#listOfGalleries ul');
    
