@@ -1,0 +1,21 @@
+body {
+    width: 90%;
+    margin: auto;
+}
+.containerGallery {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    grid-template-rows: 75px 500px;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+#header {
+    grid-column: 1 / span 3;
+}
+
+.containerGallery > div, #header{
+    background-color:lightgray;
+    box-shadow: 1px 1px 3px black;
+}
+
