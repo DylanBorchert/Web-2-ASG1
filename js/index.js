@@ -21,8 +21,6 @@ function displayContinents(continents) {
         item.textContent = g.GalleryName;
         list.appendChild(item);
     }
-<<<<<<< HEAD
-=======
     console.log(gallery);
     let div = document.querySelector(".containerGallery");
     console.log(div);
@@ -66,7 +64,6 @@ function addLI (content, ul){
     let listItem = document.createElement('li');
     listItem.textContent = content;
     ul.appendChild(listItem);
->>>>>>> 2190fa5ec62425b8c9453ba089c651c63729f5c3
 }
 
 var map;
