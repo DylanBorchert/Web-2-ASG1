@@ -55,8 +55,13 @@
     display: none;
 }
 
+.map {
+    width: 80vw;
+    height: 35vh;
+}
+
 .containerGallery > div, .containerView > div, #header{
-    background-color: var(--color-primary-3);
+    background-color: var(--color-primary-4);
     box-shadow: 1px 1px 2px black;
 }
 

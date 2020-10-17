@@ -8,11 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
     .then( (resp) => resp.json() )
     .then( data => { displayContinents(data) } )
     .catch(error => console.error(error)); 
-    
-
-
-
-console.log(gallery[0]);
 
 
 function displayContinents(continents) {
@@ -26,11 +21,17 @@ function displayContinents(continents) {
         item.textContent = g.GalleryName;
         list.appendChild(item);
     }
-
 }
 
+var map;
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 41.89474, lng: 12.4839},
+    zoom: 6
+    });
+}
 
-
+    
 // createGalleryList(gallery);
 
 // function createGalleryList(gallery){
