@@ -1,4 +1,4 @@
-
+const gallery = [];
 
 document.addEventListener("DOMContentLoaded", function() {
     let url = 'https://www.randyconnolly.com/funwebdev/3rd/api/art/galleries.php';
@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => console.error(error)); 
     
 
-const gallery = [];
+
+
+console.log(gallery[0]);
 
 
 function displayContinents(continents) {
