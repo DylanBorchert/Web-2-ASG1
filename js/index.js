@@ -20,11 +20,9 @@ function displayContinents(continents) {
     console.log(gallery);
     const list = document.querySelector('#listOfGalleries ul');
     for(let g of gallery){
-            let item = document.createElement('li');
-            item.textContent = g.GalleryName;
-        console.log(g);
-            list.appendChild(item);
-            console.log(item);
+        let item = document.createElement('li');
+        item.textContent = g.GalleryName;
+        list.appendChild(item);
     }
 
 }
