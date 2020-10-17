@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     fetch(url)
     .then( (resp) => resp.json() )
-    .then( data => { displayContinents(data) } )
+    .then( data => { doStuff(data, gallery) } )
     .catch(error => console.error(error)); 
     
 
 
 const gallery = [];
 
-
+console.log(gallery.length);
 
 
 
@@ -42,21 +42,18 @@ function createGalleryList(gallery){
     // }
 }
 });
-/*
+function doStuff(continents, gallery){
     const list = document.querySelector('#listOfGalleries ul');
    
     for (let c of continents) {
-        array += c;
-        console.log(array.GalleryName);
+        gallery.push;
+        
        
     const item = document.createElement('li');
     item.textContent = c.GalleryName;
     list.appendChild(item);
     }
-   } 
+}
 
-   function createArray(data, array) {
-    for(let d of data){
-        array = d;
-    }
-*/
+
+
