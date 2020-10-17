@@ -21,6 +21,52 @@ function displayContinents(continents) {
         item.textContent = g.GalleryName;
         list.appendChild(item);
     }
+<<<<<<< HEAD
+=======
+    console.log(gallery);
+    let div = document.querySelector(".containerGallery");
+    console.log(div);
+        
+        div.addEventListener("click", populate);
+    
+
+}
+
+
+function populate(e){
+    let nameList = e.target.querySelector('li');
+    console.log(nameList);
+    let innerDiv = document.querySelector("div #galleryInfo");
+    let ul = document.createElement('ul');
+    innerDiv.appendChild(ul);
+    for (let g of gallery){
+        if(g.GalleryName == nameList.GalleryName){
+            console.log(g);
+            addLI(g.GalleryName, ul);
+            addLI(g.GalleryNativeName, ul);
+            addLI(g.GalleryCity, ul);
+            addLI(g.GalleryAddress, ul);
+            addLI(g.GalleryCountry, ul);
+
+            let listItem = document.createElement('li');
+            let link = document.createElement('a');
+            link.setAttribute('href', `g.GalleryWebSite`);
+            link.textContent = "link";
+            listItem.appendChild(link);
+            ul.appendChild(listItem);
+        
+    
+        }
+    }
+
+
+}
+
+function addLI (content, ul){
+    let listItem = document.createElement('li');
+    listItem.textContent = content;
+    ul.appendChild(listItem);
+>>>>>>> 2190fa5ec62425b8c9453ba089c651c63729f5c3
 }
 
 var map;
