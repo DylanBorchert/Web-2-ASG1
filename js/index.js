@@ -78,32 +78,13 @@ function populate(e){
 
 }
 
-
-
-    
-// createGalleryList(gallery);
-
-// function createGalleryList(gallery){
-//     const list = document.querySelector('#listOfGalleries ul');
-//     console.log(gallery);
-//     for(let i = 0; i < 10; i++) {
-//         console.log(gallery[i] );
-//     }
-//     // for(let g of gallery){
-//     //      let item = document.createElement('li');
-//     //      item.textContent = g.GalleryName;
-//     //     console.log(g);
-//     //      list.appendChild(item);
-//     //      console.log(item);
-//     // }
-// }
 });
 
 var map
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 15,
-      center: { lat: -10.363882, lng: 50.044922 },
+      zoom: 16,
+      center: { lat: -10.363882, lng: 50.044922 }
     });
 }
 
