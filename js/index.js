@@ -54,7 +54,7 @@ function populate(e){
 
                 let listItem = document.createElement('li');
                 let link = document.createElement('a');
-                link.setAttribute('href', `g.GalleryWebSite`);
+                link.setAttribute('href', `${g.GalleryWebSite}`);
                 link.textContent = "link";
                 listItem.appendChild(link);
                 ul.appendChild(listItem);
