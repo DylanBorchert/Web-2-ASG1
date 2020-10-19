@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => console.error("Fetch Error :- " + error)); 
 
 
+    let mapContainer = document.querySelector("#map");
+    console.log(mapContainer); 
+    mapContainer.style.display = "none";
+
 function displayContinents(continents) {
     for(let c of continents){
         gallery.push(c);
@@ -41,10 +45,13 @@ function populate(e){
         innerDiv.innerHTML = "";
         let ul = document.createElement('ul');
         innerDiv.appendChild(ul);
+
+        mapContainer.style.display = "block";
+
         for (let g of gallery){
             if(g.GalleryName == nameList.textContent){
                 console.warn("Line 47 loop run with " + g);
-                console.log(g);
+                
                 
                 addLI(g.GalleryName, ul);
                 addLI(g.GalleryNativeName, ul);
@@ -59,14 +66,6 @@ function populate(e){
                 listItem.appendChild(link);
                 ul.appendChild(listItem);
             
-                var map;
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 41.89474, lng: 12.4839},
-        zoom: 1.5
-    });
-}
-initMap();
         
             }
         }
@@ -95,7 +94,7 @@ initMap();
 //     // }
 // }
 });
-/*
+
 var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -103,4 +102,3 @@ function initMap() {
         zoom: 1.5
     });
 }
-*/
