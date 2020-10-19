@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => console.error("Fetch Error :- " + error)); 
 
 
+    let mapContainer = document.querySelector("#map");
+    console.log(mapContainer); 
+    mapContainer.style.display = "none";
+
 function displayContinents(continents) {
     for(let c of continents){
         gallery.push(c);
@@ -39,12 +43,18 @@ function populate(e){
         let nameList = e.target;
         console.log(nameList);
         let innerDiv = document.querySelector("div #galleryInfo");
+        innerDiv.innerHTML = "";
         let ul = document.createElement('ul');
         innerDiv.appendChild(ul);
+
+        mapContainer.style.display = "block";
+        
+
         for (let g of gallery){
             if(g.GalleryName == nameList.textContent){
                 console.warn("Line 47 loop run with " + g);
-                console.log(g);
+                
+                
                 addLI(g.GalleryName, ul);
                 addLI(g.GalleryNativeName, ul);
                 addLI(g.GalleryCity, ul);
@@ -53,12 +63,14 @@ function populate(e){
 
                 let listItem = document.createElement('li');
                 let link = document.createElement('a');
-                link.setAttribute('href', `g.GalleryWebSite`);
+                link.setAttribute('href', `${g.GalleryWebSite}`);
                 link.textContent = "link";
                 listItem.appendChild(link);
                 ul.appendChild(listItem);
-            
-        
+
+                console.log(g);
+                //changeLocation(`${g.}`,`${}`);
+
             }
         }
     }
