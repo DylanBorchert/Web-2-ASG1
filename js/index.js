@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let galleryMap = document.querySelector("#galleryMap");
     let galleryInfo = document.querySelector("#galleryInfo");
     let paintings = document.querySelector("#paintings");
-    console.log(mapContainer); 
+    //console.log(mapContainer); 
     mapContainer.style.display = "none";
     galleryMap.style.display = "none";
     galleryInfo.style.display = "none";
@@ -25,7 +25,7 @@ function displayContinents(continents) {
     for(let c of continents){
         gallery.push(c);
     }
-    console.log(gallery);
+    //console.log(gallery);
     const listGalleryDiv = document.querySelector('#listOfGalleries');
     const list = document.createElement("ul")
     for(let g of gallery){
@@ -34,7 +34,7 @@ function displayContinents(continents) {
         list.appendChild(item);
     }
     listGalleryDiv.appendChild(list);        
-    console.log(gallery);
+    //console.log(gallery);
     listGalleryDiv.addEventListener("click", populate);
     
 
@@ -82,7 +82,7 @@ function populate(e){
                 listItem.appendChild(link);
                 ul.appendChild(listItem);
 
-                console.log(g);
+                //console.log(g);
                 changeLocation(g.Latitude,g.Longitude);
 
                 paintingCall(g);
@@ -97,7 +97,11 @@ function populate(e){
     function paintingCall(gallery){
         let paintingList = [];
         let paintingContainer = document.querySelector("#paintings");
-        let galleryLink = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${gallery.GalleryID}`
+        let galleryLink = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${gallery.GalleryID}`;
+        let loader = document.querySelector("#loader2");
+        loader.style.display = "inline-block";
+        console.log(loader.style.display);
+        console.log(loader);
         fetch(galleryLink)
         .then(response => response.json())
         .then(data => { 
@@ -111,7 +115,7 @@ function populate(e){
                 
                 li = addLI(painting.Title, ul);
                 
-                console.log(painting);
+                //console.log(painting);
                 addImage(painting, ul);
 
             }
@@ -124,7 +128,7 @@ function populate(e){
         let listItem = document.createElement('img');
         listItem.setAttribute("src", `https://res.cloudinary.com/funwebdev/image/upload/w_${painting.Height}/art/paintings/${painting.ImageFileName}`); //`<img src="https://res.cloudinary.com/funwebdev/image/upload/small/art/paintings/${painting.ImageFileName}">`;
         listItem.setAttribute("width", "100");
-        listItem.setAttribute("height", "100");
+        listItem.setAttribute("height", "auto");
         ul.appendChild(listItem);
         
     }
