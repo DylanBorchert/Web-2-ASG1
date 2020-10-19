@@ -213,7 +213,7 @@ function initMap() {
         {
           featureType: "water",
           elementType: "geometry",
-          stylers: [{ color: "#c9c9c9" }],
+          stylers: [{ color: "#D9DCD6" }],
         },
         {
           featureType: "water",
