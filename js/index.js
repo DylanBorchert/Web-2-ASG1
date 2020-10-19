@@ -38,12 +38,14 @@ function populate(e){
         let nameList = e.target;
         console.log(nameList);
         let innerDiv = document.querySelector("div #galleryInfo");
+        innerDiv.innerHTML = "";
         let ul = document.createElement('ul');
         innerDiv.appendChild(ul);
         for (let g of gallery){
             if(g.GalleryName == nameList.textContent){
                 console.warn("Line 47 loop run with " + g);
                 console.log(g);
+                
                 addLI(g.GalleryName, ul);
                 addLI(g.GalleryNativeName, ul);
                 addLI(g.GalleryCity, ul);
