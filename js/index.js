@@ -31,15 +31,19 @@ function displayContinents(continents) {
     
 
 }
+ function addLI (content, ul){
+    let listItem = document.createElement('li');
+    listItem.value = `${content}`;
+    listItem.textContent = content;
+    ul.appendChild(listItem);
 
+    return listItem;
+
+}
 
 function populate(e){
-    const addLI = function addLI (content, ul){
-        let listItem = document.createElement('li');
-        listItem.textContent = content;
-        ul.appendChild(listItem);
-    }
-    if(e.target.nodeName.toLowerCase() == "li") {
+
+   if(e.target.nodeName.toLowerCase() == "li") {
         let nameList = e.target;
         console.log(nameList);
         let innerDiv = document.querySelector("div #galleryInfo");
@@ -71,12 +75,50 @@ function populate(e){
                 console.log(g);
                 changeLocation(g.Latitude,g.Longitude);
 
+                paintingCall(g);
+
             }
         }
     }
 
 
 }
+
+    function paintingCall(gallery){
+        let paintingList = [];
+        let paintingContainer = document.querySelector("#paintings");
+        let galleryLink = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${gallery.GalleryID}`
+        fetch(galleryLink)
+        .then(response => response.json())
+        .then(data => { 
+
+            paintingList.push(...data);
+            paintingContainer.innerHTML = "";
+            let ul = document.createElement("ul");
+            paintingContainer.appendChild(ul);
+
+            for(let painting of paintingList){
+                
+                li = addLI(painting.Title, ul);
+                
+                console.log(painting);
+                addImage(painting, ul);
+
+            }
+
+        } )
+
+    }
+
+    function addImage(painting, ul){
+        let listItem = document.createElement('img');
+        listItem.setAttribute("src", `https://res.cloudinary.com/funwebdev/image/upload/w_${painting.Height}/art/paintings/${painting.ImageFileName}`); //`<img src="https://res.cloudinary.com/funwebdev/image/upload/small/art/paintings/${painting.ImageFileName}">`;
+        listItem.setAttribute("width", "100");
+        listItem.setAttribute("height", "100");
+        ul.appendChild(listItem);
+        
+    }
+
 
 });
 
