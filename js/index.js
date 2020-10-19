@@ -22,6 +22,7 @@ function displayContinents(continents) {
         list.appendChild(item);
     }
     listGalleryDiv.appendChild(list);        
+    console.log(gallery);
     listGalleryDiv.addEventListener("click", populate);
     
 
@@ -86,10 +87,29 @@ function populate(e){
 // }
 });
 
-var map;
+var map
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 41.89474, lng: 12.4839},
-        zoom: 1.5
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: { lat: -10.363882, lng: 50.044922 },
     });
-}
+    // map.addListener("click", (e) => {
+    //   placeMarkerAndPanTo(e.latLng, map);
+    // });
+  }
+
+  setTimeout(function moveMap() {
+        myLatLng = new google.maps.LatLng({lat: -34, lng: 151});
+        map.panTo(myLatLng);
+        //map.setCenter({lat: -34, lng: 151});
+        // new google.maps.Marker({position: {lat: -34, lng: 151}, map: map}); 
+  }, 3000);
+
+  function placeMarkerAndPanTo(latLng, map) {
+      console.log(latLng)
+    new google.maps.Marker({
+      position: latLng,
+      map: map,
+    });
+    map.panTo(latLng);
+  }
