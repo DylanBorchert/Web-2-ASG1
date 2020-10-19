@@ -59,6 +59,14 @@ function populate(e){
                 listItem.appendChild(link);
                 ul.appendChild(listItem);
             
+                var map;
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 41.89474, lng: 12.4839},
+        zoom: 1.5
+    });
+}
+initMap();
         
             }
         }
@@ -87,7 +95,7 @@ function populate(e){
 //     // }
 // }
 });
-
+/*
 var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -95,3 +103,4 @@ function initMap() {
         zoom: 1.5
     });
 }
+*/
