@@ -1,4 +1,5 @@
 const gallery = [];
+let paintingList = [];
 
 document.addEventListener("DOMContentLoaded", function() {
     let url = 'https://www.randyconnolly.com/funwebdev/3rd/api/art/galleries.php';
@@ -25,7 +26,7 @@ function displayContinents(continents) {
     for(let c of continents){
         gallery.push(c);
     }
-    //console.log(gallery);
+
     const listGalleryDiv = document.querySelector('#listOfGalleries');
     const list = document.createElement("ul")
     for(let g of gallery){
@@ -34,7 +35,7 @@ function displayContinents(continents) {
         list.appendChild(item);
     }
     listGalleryDiv.appendChild(list);        
-    //console.log(gallery);
+
     listGalleryDiv.addEventListener("click", populate);
     
 
@@ -82,7 +83,7 @@ function populate(e){
                 listItem.appendChild(link);
                 ul.appendChild(listItem);
 
-                //console.log(g);
+          
                 changeLocation(g.Latitude,g.Longitude);
 
                 paintingCall(g);
@@ -95,42 +96,89 @@ function populate(e){
 }
 
     function paintingCall(gallery){
-        let paintingList = [];
+        paintingList = [];
         let paintingContainer = document.querySelector("#paintings");
         let galleryLink = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${gallery.GalleryID}`;
-        let loader = document.querySelector("#loader2");
-        loader.style.display = "inline-block";
-        console.log(loader.style.display);
-        console.log(loader);
+        //let loader = document.querySelector("#loader2");
+        //loader.style.display = "inline-block";
+        //console.log(loader.style.display);
+        //console.log(loader);
         fetch(galleryLink)
         .then(response => response.json())
         .then(data => { 
 
             paintingList.push(...data);
             paintingContainer.innerHTML = "";
-            let ul = document.createElement("ul");
-            paintingContainer.appendChild(ul);
+            let table = document.createElement("table");
+            paintingContainer.appendChild(table);
+           
+            addTH(table);
 
             for(let painting of paintingList){
+                let tr = document.createElement("tr");
+                table.appendChild(tr);
+
+                addImage(painting, tr, "small");
+                addTD(painting.LastName, tr);
+                addTD(painting.Title, tr);
+                addTD(painting.YearOfWork, tr);
+              
                 
-                li = addLI(painting.Title, ul);
                 
-                //console.log(painting);
-                addImage(painting, ul);
+                
+                console.log(painting);
+
 
             }
+
+            paintingContainer.addEventListener("click", printPaintingData);
 
         } )
 
     }
 
-    function addImage(painting, ul){
+    function addTH(table){
+      tr = document.createElement("tr");
+      table.appendChild(tr);
+      img = document.createElement("th");
+      lastName = document.createElement("th");
+      creationYear = document.createElement("th");
+
+      img.textContent = "Image";
+      lastName.textContent = "Name";
+      creationYear.textContent = "Year";
+
+      tr.appendChild(img);
+      console.log(typeof(name));
+      console.log(typeof(img));
+      tr.appendChild(lastName);
+      tr.appendChild(creationYear);
+    }
+
+    function addTD(element, tr){
+      td1 = document.createElement("td");
+      tr.appendChild(td1);
+      td1.textContent = element;
+
+    }
+
+    function addImage(painting, ul, size){
         let listItem = document.createElement('img');
-        listItem.setAttribute("src", `https://res.cloudinary.com/funwebdev/image/upload/w_${painting.Height}/art/paintings/${painting.ImageFileName}`); //`<img src="https://res.cloudinary.com/funwebdev/image/upload/small/art/paintings/${painting.ImageFileName}">`;
-        listItem.setAttribute("width", "100");
-        listItem.setAttribute("height", "auto");
+        if (size == "medium"){listItem.setAttribute("src", `https://res.cloudinary.com/funwebdev/image/upload/w_${painting.Height}/art/paintings/${painting.ImageFileName}`) }; //`<img src="https://res.cloudinary.com/funwebdev/image/upload/small/art/paintings/${painting.ImageFileName}">`;
+        if (size == "small"){
+          listItem.setAttribute("src", `https://res.cloudinary.com/funwebdev/image/upload/w_${painting.Height}/art/paintings/square/${painting.ImageFileName}`); 
+        
+          listItem.setAttribute("width", "100");
+          listItem.setAttribute("height", "auto");
+        } 
+
         ul.appendChild(listItem);
         
+    }
+
+    function printPaintingData(e){
+      console.log(e.target);
+      console.log(paintingList[0]);
     }
 
 
@@ -232,5 +280,5 @@ function changeLocation(latValue, lngValue) {
     myLatLng = new google.maps.LatLng({lat: latValue, lng: lngValue});
     new google.maps.Marker({position: {lat: latValue, lng: lngValue}, map: map}); 
     map.panTo(myLatLng);
-    map.setZoom(15);
+    map.setZoom(18);
 }
