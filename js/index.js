@@ -69,7 +69,7 @@ function populate(e){
                 ul.appendChild(listItem);
 
                 console.log(g);
-                changeLocation(`${g.Latitude}`,`${g.Longitude}`);
+                changeLocation(g.Latitude,g.Longitude);
 
             }
         }
@@ -102,13 +102,13 @@ function populate(e){
 var map
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
+      zoom: 15,
       center: { lat: -10.363882, lng: 50.044922 },
     });
 }
 
 function changeLocation(latValue, lngValue) {
-    // myLatLng = new google.maps.LatLng({lat: latValue, lng: lngValue});
-    // map.panTo(myLatLng);
-    map.setCenter({lat: latValue, lng: lngValue});
+    myLatLng = new google.maps.LatLng({lat: latValue, lng: lngValue});
+    new google.maps.Marker({position: {lat: latValue, lng: lngValue}, map: map}); 
+    map.panTo(myLatLng);
 }
