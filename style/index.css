@@ -55,9 +55,8 @@
     display: none;
 }
 
-.map {
-    width: 80vw;
-    height: 35vh;
+#map {
+    height: 45vh;
 }
 
 .containerGallery > div, .containerView > div, #header{

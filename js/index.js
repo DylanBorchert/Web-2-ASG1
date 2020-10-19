@@ -66,14 +66,6 @@ function addLI (content, ul){
     ul.appendChild(listItem);
 }
 
-var map;
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 41.89474, lng: 12.4839},
-    zoom: 6
-    });
-}
-
     
 // createGalleryList(gallery);
 
@@ -92,3 +84,11 @@ function initMap() {
 //     // }
 // }
 });
+
+var map;
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 41.89474, lng: 12.4839},
+        zoom: 6
+    });
+}
