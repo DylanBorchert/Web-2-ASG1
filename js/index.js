@@ -47,6 +47,7 @@ function populate(e){
         innerDiv.appendChild(ul);
 
         mapContainer.style.display = "block";
+        
 
         for (let g of gallery){
             if(g.GalleryName == nameList.textContent){
@@ -65,8 +66,10 @@ function populate(e){
                 link.textContent = "link";
                 listItem.appendChild(link);
                 ul.appendChild(listItem);
-            
-        
+
+                console.log(g);
+                //changeLocation(`${g.}`,`${}`);
+
             }
         }
     }
@@ -94,6 +97,14 @@ function populate(e){
 //     // }
 // }
 });
+
+function changeLocation(latitude, longitude){
+	map.setCenter({
+		lat : latitude,
+		lng : longitude
+	});
+}
+
 
 var map;
 function initMap() {
