@@ -1,5 +1,6 @@
 const gallery = [];
 let paintingList = [];
+let table = "";
 
 document.addEventListener("DOMContentLoaded", function() {
     let url = 'https://www.randyconnolly.com/funwebdev/3rd/api/art/galleries.php';
@@ -86,6 +87,8 @@ function populate(e){
 
                 paintingCall(g);
 
+
+
             }
         }
     }
@@ -107,7 +110,7 @@ function populate(e){
 
             paintingList.push(...data);
             paintingContainer.innerHTML = "";
-            let table = document.createElement("table");
+            table = document.createElement("table");
             paintingContainer.appendChild(table);
            
             addTH(table);
@@ -128,27 +131,115 @@ function populate(e){
 
 
             }
+           
+            let artistHeader = document.querySelector("#artist");
+            console.log(artistHeader);
+            let lastNameHeader = document.querySelector("#lastName");
+            console.log(lastNameHeader);
+            let yearHeader = document.querySelector("#year");
+            console.log(yearHeader);
+            
+            artistHeader.addEventListener("click", artistClick);
+            lastNameHeader.addEventListener("click", artistClick);
+            yearHeader.addEventListener("click", artistClick);
 
-            paintingContainer.addEventListener("click", printPaintingData);
+           // paintingContainer.addEventListener("click", printPaintingData);
 
         } )
 
     }
 
+    function artistClick(e){
+      console.log(e.target.id);
+      table.textContent = "";
+
+      addTH(table);
+      console.log(paintingList);
+      console.log(paintingList);
+      if(e.target.id = "artists"){
+        paintingList.sort(compareArtist);
+      }
+      else if(e.target.id = "title"){
+        paintingList.sort(compareTitle);
+      }
+      else if(e.target.id = "artist"){
+        paintingList.sort(compareYear);
+      }
+
+      for(let painting of paintingList){
+        let tr = document.createElement("tr");
+        table.appendChild(tr);
+
+        addImage(painting, tr, "small");
+        addTD(painting.LastName, tr);
+        addTD(painting.Title, tr);
+        addTD(painting.YearOfWork, tr);
+    }
+
+    }
+
+    function compareYear(a, b){
+      let paintingOne = a.YearOfWork.toLowerCase();
+      let paintingTwo = b.YearOfWork.toLowerCase();
+
+      let compare = 0;
+      if (paintingOne > paintingTwo){
+        compare = 1;
+      }
+      else if(paintingOne < paintingTwo){
+        compare = -1
+      }
+      return compare;
+    }
+
+    function compareTitle(a, b){
+      let paintingOne = a.Title.toLowerCase();
+      let paintingTwo = b.Title.toLowerCase();
+
+      let compare = 0;
+      if (paintingOne > paintingTwo){
+        compare = 1;
+      }
+      else if(paintingOne < paintingTwo){
+        compare = -1
+      }
+      return compare;
+    }
+
+    function compareArtist(a, b){
+      let paintingOne = a.LastName.toLowerCase();
+      let paintingTwo = b.LastName.toLowerCase();
+
+      let compare = 0;
+      if (paintingOne > paintingTwo){
+        compare = 1;
+      }
+      else if(paintingOne < paintingTwo){
+        compare = -1
+      }
+      return compare;
+    }
+
     function addTH(table){
       tr = document.createElement("tr");
+      tr.setAttribute("id","tableHeader");
       table.appendChild(tr);
-      img = document.createElement("th");
+      empty = document.createElement("tr");
+      tr.appendChild(empty);
+      artist = document.createElement("th");
+      artist.setAttribute("id","artist");
       lastName = document.createElement("th");
+      lastName.setAttribute("id","lastName");
       creationYear = document.createElement("th");
+      creationYear.setAttribute("id","year");
 
-      img.textContent = "Image";
-      lastName.textContent = "Name";
+      artist.textContent = "Artist";
+      lastName.textContent = "Title";
       creationYear.textContent = "Year";
 
-      tr.appendChild(img);
+      tr.appendChild(artist);
       console.log(typeof(name));
-      console.log(typeof(img));
+      console.log(typeof(artist));
       tr.appendChild(lastName);
       tr.appendChild(creationYear);
     }
@@ -173,12 +264,12 @@ function populate(e){
         ul.appendChild(listItem);
         
     }
-
+/*
     function printPaintingData(e){
       console.log(e.target);
       console.log(paintingList[0]);
     }
-
+*/
 
 });
 
