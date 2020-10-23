@@ -133,9 +133,7 @@ function populate(e){
                 table.appendChild(tr);
 
                 addImage(painting, tr, "small");
-                addTD(painting.LastName, tr);
-                addTD(painting.Title, tr);
-                addTD(painting.YearOfWork, tr);
+                addTD(painting, tr);
               
                 
                 
@@ -271,10 +269,21 @@ function populate(e){
       tr.appendChild(creationYear);
     }
 
-    function addTD(element, node){
-      td1 = document.createElement("td");
-      node.appendChild(td1);
-      td1.textContent = element;
+    function addTD(painting, node){
+
+      let nameTD = document.createElement("td");
+      nameTD.textContent = painting.LastName;
+
+      let titleTD = document.createElement("td");
+      titleTD.textContent = painting.Title;
+      titleTD.setAttribute("id", "paintingTitle");
+    
+      let yearTD = document.createElement("td")
+      yearTD.textContent = painting.YearOfWork;
+    
+      node.appendChild(nameTD);
+      node.appendChild(titleTD);
+      node.appendChild(yearTD);
     }
 
 
