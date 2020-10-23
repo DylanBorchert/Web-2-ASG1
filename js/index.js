@@ -118,6 +118,7 @@ function populate(e){
         .then(data => { 
 
             paintingList.push(...data);
+            
 
             paintingContainer.innerHTML = "";
             table = document.createElement("table");
@@ -147,8 +148,8 @@ function populate(e){
                 
                 
                 
-                //console.log(painting);
-
+                console.log(painting);
+                
 
             }
            
@@ -213,8 +214,8 @@ function populate(e){
     }
 
     function compareYear(a, b){
-      let paintingOne = a.YearOfWork.toLowerCase();
-      let paintingTwo = b.YearOfWork.toLowerCase();
+      let paintingOne = a.YearOfWork;
+      let paintingTwo = b.YearOfWork;
 
       let compare = 0;
       if (paintingOne > paintingTwo){
