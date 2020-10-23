@@ -244,12 +244,13 @@ function populate(e){
       tr.appendChild(creationYear);
     }
 
-    function addTD(element, tr){
+    function addTD(element, node){
       td1 = document.createElement("td");
-      tr.appendChild(td1);
+      node.appendChild(td1);
       td1.textContent = element;
-
     }
+
+
 
     function addImage(painting, ul, size){
         let listItem = document.createElement('img');
