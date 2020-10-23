@@ -94,7 +94,16 @@ function populate(e){
 
 
 
-
+                let artistHeader = document.querySelector("#artist");
+                console.log(artistHeader);
+                let lastNameHeader = document.querySelector("#lastName");
+                console.log(lastNameHeader);
+                let yearHeader = document.querySelector("#year");
+                console.log(yearHeader);
+   
+               artistHeader.addEventListener("click", artistClick);
+               lastNameHeader.addEventListener("click", artistClick);
+               yearHeader.addEventListener("click", artistClick);
 
             }
         }
@@ -136,7 +145,7 @@ function populate(e){
             console.log(paintingList);
            
             addTH(table);
-          paintingList.sort(compareArtist);
+          //paintingList.sort(compareArtist);
             for(let painting of paintingList){
                 let tr = document.createElement("tr");
                 table.appendChild(tr);
@@ -152,16 +161,16 @@ function populate(e){
 
             }
            
-             let artistHeader = document.querySelector("#artist");
-             console.log(artistHeader);
-             let lastNameHeader = document.querySelector("#lastName");
-             console.log(lastNameHeader);
-             let yearHeader = document.querySelector("#year");
-             console.log(yearHeader);
+          //   let artistHeader = document.querySelector("#artist");
+          //   console.log(artistHeader);
+          //   let lastNameHeader = document.querySelector("#lastName");
+          //   console.log(lastNameHeader);
+          //   let yearHeader = document.querySelector("#year");
+          //   console.log(yearHeader);
 
-            artistHeader.addEventListener("click", artistClick);
-            lastNameHeader.addEventListener("click", artistClick);
-            yearHeader.addEventListener("click", artistClick);
+          //  artistHeader.addEventListener("click", artistClick);
+          //  lastNameHeader.addEventListener("click", artistClick);
+          //  yearHeader.addEventListener("click", artistClick);
             
 
 
