@@ -90,20 +90,11 @@ function populate(e){
                 changeLocation(g.Latitude,g.Longitude);
 
                 paintingCall(g);
-                console.log(g, "artist");
+//                console.log(g, "artist");
 
 
 
-                let artistHeader = document.querySelector("#artist");
-                console.log(artistHeader);
-                let lastNameHeader = document.querySelector("#lastName");
-                console.log(lastNameHeader);
-                let yearHeader = document.querySelector("#year");
-                console.log(yearHeader);
-   
-               artistHeader.addEventListener("click", artistClick);
-               lastNameHeader.addEventListener("click", artistClick);
-               yearHeader.addEventListener("click", artistClick);
+
 
             }
         }
@@ -117,7 +108,7 @@ function populate(e){
         paintingList = [];
         let paintingContainer = document.querySelector("#paintings");
         let galleryLink = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${gallery.GalleryID}`;
-        console.log(gallery);
+        //console.log(gallery);
         //let loader = document.querySelector("#loader2");
         //loader.style.display = "inline-block";
         //console.log(loader.style.display);
@@ -127,22 +118,22 @@ function populate(e){
         .then(data => { 
 
             paintingList.push(...data);
-            console.log(paintingList);
+
             paintingContainer.innerHTML = "";
             table = document.createElement("table");
             paintingContainer.appendChild(table);
-            if(sort = "artists"){
+            if(sort == "artists"){
               paintingList.sort(compareArtist);
             }
-            else if(sort = "title"){
+            else if(sort == "title"){
               paintingList.sort(compareTitle);
               console.log(paintingList);
             }
-            else if(sort = "year"){
+            else if(sort == "year"){
               console.log("year");
               paintingList.sort(compareYear);
             }
-            console.log(paintingList);
+
            
             addTH(table);
           //paintingList.sort(compareArtist);
@@ -156,21 +147,21 @@ function populate(e){
                 
                 
                 
-                console.log(painting);
+                //console.log(painting);
 
 
             }
            
-          //   let artistHeader = document.querySelector("#artist");
-          //   console.log(artistHeader);
-          //   let lastNameHeader = document.querySelector("#lastName");
-          //   console.log(lastNameHeader);
-          //   let yearHeader = document.querySelector("#year");
-          //   console.log(yearHeader);
+             let artistHeader = document.querySelector("#artist");
+             console.log(artistHeader);
+             let lastNameHeader = document.querySelector("#lastName");
+             console.log(lastNameHeader);
+             let yearHeader = document.querySelector("#year");
+             console.log(yearHeader);
 
-          //  artistHeader.addEventListener("click", artistClick);
-          //  lastNameHeader.addEventListener("click", artistClick);
-          //  yearHeader.addEventListener("click", artistClick);
+            artistHeader.addEventListener("click", artistClick);
+            lastNameHeader.addEventListener("click", artistClick);
+            yearHeader.addEventListener("click", artistClick);
             
 
 
@@ -182,13 +173,13 @@ function populate(e){
 
     function artistClick(e){
       console.log(e.target.id);
-      if(e.target.id = "lastName"){
+      if(e.target.id == "lastName"){
         paintingCall(currGallery, "artists");
       }
-      else if(e.target.id = "title"){
+      else if(e.target.id == "title"){
         paintingCall(currGallery, "title");
       }
-      else if(e.target.id = "year"){
+      else if(e.target.id == "year"){
         paintingCall(currGallery, "year");
       }
       
@@ -281,8 +272,8 @@ function populate(e){
       creationYear.textContent = "Year";
 
       tr.appendChild(artist);
-      console.log(typeof(name));
-      console.log(typeof(artist));
+//      console.log(typeof(name));
+//      console.log(typeof(artist));
       tr.appendChild(lastName);
       tr.appendChild(creationYear);
     }
