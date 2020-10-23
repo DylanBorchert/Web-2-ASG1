@@ -86,6 +86,9 @@ function populate(e){
                 changeLocation(g.Latitude,g.Longitude);
 
                 paintingCall(g);
+                console.log(g, "artist");
+
+
 
 
 
@@ -96,7 +99,7 @@ function populate(e){
 
 }
 
-    function paintingCall(gallery){
+    function paintingCall(gallery, sort){
         paintingList = [];
         let paintingContainer = document.querySelector("#paintings");
         let galleryLink = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${gallery.GalleryID}`;
@@ -112,9 +115,19 @@ function populate(e){
             paintingContainer.innerHTML = "";
             table = document.createElement("table");
             paintingContainer.appendChild(table);
+            if(sort = "artists"){
+              paintingList.sort(compareArtist);
+            }
+            else if(sort = "title"){
+              paintingList.sort(compareTitle);
+              console.log(paintingList);
+            }
+            else if(sort = "year"){
+              paintingList.sort(compareYear);
+            }
            
             addTH(table);
-
+          paintingList.sort(compareArtist);
             for(let painting of paintingList){
                 let tr = document.createElement("tr");
                 table.appendChild(tr);
@@ -138,10 +151,12 @@ function populate(e){
             console.log(lastNameHeader);
             let yearHeader = document.querySelector("#year");
             console.log(yearHeader);
-            
+
             artistHeader.addEventListener("click", artistClick);
             lastNameHeader.addEventListener("click", artistClick);
             yearHeader.addEventListener("click", artistClick);
+            
+
 
            // paintingContainer.addEventListener("click", printPaintingData);
 
@@ -151,30 +166,42 @@ function populate(e){
 
     function artistClick(e){
       console.log(e.target.id);
-      table.textContent = "";
-
-      addTH(table);
-      console.log(paintingList);
-      console.log(paintingList);
       if(e.target.id = "artists"){
-        paintingList.sort(compareArtist);
+        paintingCall(gallery, "artists");
       }
       else if(e.target.id = "title"){
-        paintingList.sort(compareTitle);
+        paintingCall(gallery, "title");
       }
-      else if(e.target.id = "artist"){
-        paintingList.sort(compareYear);
+      else if(e.target.id = "year"){
+        paintingCall(gallery, "year");
       }
+      
+    //   console.log(e.target.id);
+    //   table.textContent = "";
+    //   console.dir(table);
 
-      for(let painting of paintingList){
-        let tr = document.createElement("tr");
-        table.appendChild(tr);
+    //   addTH(table);
+    //   console.log(paintingList);
+    //   console.log(paintingList);
+    //   if(e.target.id = "artists"){
+    //     paintingList.sort(compareArtist);
+    //   }
+    //   else if(e.target.id = "title"){
+    //     paintingList.sort(compareTitle);
+    //   }
+    //   else if(e.target.id = "artist"){
+    //     paintingList.sort(compareYear);
+    //   }
 
-        addImage(painting, tr, "small");
-        addTD(painting.LastName, tr);
-        addTD(painting.Title, tr);
-        addTD(painting.YearOfWork, tr);
-    }
+    //   for(let painting of paintingList){
+    //     let tr = document.createElement("tr");
+    //     table.appendChild(tr);
+
+    //     addImage(painting, tr, "small");
+    //     addTD(painting.LastName, tr);
+    //     addTD(painting.Title, tr);
+    //     addTD(painting.YearOfWork, tr);
+    // }
 
     }
 
