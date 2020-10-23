@@ -1,6 +1,7 @@
 const gallery = [];
 let paintingList = [];
 let table = "";
+let currGallery = "";
 
 document.addEventListener("DOMContentLoaded", function() {
     let url = 'https://www.randyconnolly.com/funwebdev/3rd/api/art/galleries.php';
@@ -34,10 +35,13 @@ function displayContinents(continents) {
         let item = document.createElement('li');
         item.textContent = g.GalleryName;
         list.appendChild(item);
-    }
-    listGalleryDiv.appendChild(list);        
+        listGalleryDiv.appendChild(list);        
 
-    listGalleryDiv.addEventListener("click", populate);
+        listGalleryDiv.addEventListener("click", populate);
+    }
+    // listGalleryDiv.appendChild(list);        
+
+    // listGalleryDiv.addEventListener("click", populate);
     
 
 }
@@ -100,9 +104,11 @@ function populate(e){
 }
 
     function paintingCall(gallery, sort){
+      currGallery = gallery;
         paintingList = [];
         let paintingContainer = document.querySelector("#paintings");
         let galleryLink = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${gallery.GalleryID}`;
+        console.log(gallery);
         //let loader = document.querySelector("#loader2");
         //loader.style.display = "inline-block";
         //console.log(loader.style.display);
@@ -112,6 +118,7 @@ function populate(e){
         .then(data => { 
 
             paintingList.push(...data);
+            console.log(paintingList);
             paintingContainer.innerHTML = "";
             table = document.createElement("table");
             paintingContainer.appendChild(table);
@@ -123,8 +130,10 @@ function populate(e){
               console.log(paintingList);
             }
             else if(sort = "year"){
+              console.log("year");
               paintingList.sort(compareYear);
             }
+            console.log(paintingList);
            
             addTH(table);
           paintingList.sort(compareArtist);
@@ -145,12 +154,12 @@ function populate(e){
 
             }
            
-            let artistHeader = document.querySelector("#artist");
-            console.log(artistHeader);
-            let lastNameHeader = document.querySelector("#lastName");
-            console.log(lastNameHeader);
-            let yearHeader = document.querySelector("#year");
-            console.log(yearHeader);
+             let artistHeader = document.querySelector("#artist");
+             console.log(artistHeader);
+             let lastNameHeader = document.querySelector("#lastName");
+             console.log(lastNameHeader);
+             let yearHeader = document.querySelector("#year");
+             console.log(yearHeader);
 
             artistHeader.addEventListener("click", artistClick);
             lastNameHeader.addEventListener("click", artistClick);
@@ -166,14 +175,14 @@ function populate(e){
 
     function artistClick(e){
       console.log(e.target.id);
-      if(e.target.id = "artists"){
-        paintingCall(gallery, "artists");
+      if(e.target.id = "lastName"){
+        paintingCall(currGallery, "artists");
       }
       else if(e.target.id = "title"){
-        paintingCall(gallery, "title");
+        paintingCall(currGallery, "title");
       }
       else if(e.target.id = "year"){
-        paintingCall(gallery, "year");
+        paintingCall(currGallery, "year");
       }
       
     //   console.log(e.target.id);
