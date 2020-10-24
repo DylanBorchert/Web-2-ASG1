@@ -3,8 +3,6 @@ let paintingList = [];
 let table = "";
 let currGallery = "";
 
-// document.querySelector(".containerView").style.display = "none" // hides the 
-
 document.addEventListener("DOMContentLoaded", function() {
     let url = 'https://www.randyconnolly.com/funwebdev/3rd/api/art/galleries.php';
 
@@ -92,6 +90,11 @@ function populate(e){
                 changeLocation(g.Latitude,g.Longitude);
 
                 paintingCall(g);
+//                console.log(g, "artist");
+
+
+
+
 
             }
         }
@@ -175,7 +178,7 @@ function populate(e){
 
     }
 
-    function artistClick(e) {
+    function artistClick(e){
       console.log(e.target.id);
       if(e.target.id == "lastName"){
         paintingCall(currGallery, "artists");
@@ -219,7 +222,8 @@ function populate(e){
     function tableClicks(e){
       console.log(e.target.nodeName);
       if(e.target.id == "paintingTitle"){
-        console.log("apinting title found");
+        console.log("pinting title found");
+        
       }
       else if(e.target.nodeName == "IMG"){
         console.log("img found");
@@ -327,13 +331,6 @@ function populate(e){
 
         ul.appendChild(listItem);
         
-    }
-
-    function paintingView() {
-      const containerGallery = document.querySelector(".containerGallery");
-      const containerView = document.querySelector(".containerView");
-      containerGallery.style.display = "none"
-      containerView.style.display = "grid"
     }
 /*
     function printPaintingData(e){
