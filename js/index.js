@@ -226,11 +226,48 @@ function paintingView() {
 
     }
 
+    
+
     function tableClicks(e){
       console.log(e.target.nodeName);
       if(e.target.id == "paintingTitle"){
         console.log("pinting title found");
+        paintingView();
+        console.log(e.target);
+        let divPaintingView = document.querySelector("#painingView");
+        console.log(paintingList);
+        for(let painting of paintingList){
+          if (e.target.innerHTML == painting.Title){
+            console.log("got it");
 
+            addImage(painting, divPaintingView, "medium");
+            let h2 = document.createElement("h2");
+            divPaintingView.appendChild(h2);
+            h2.textContent = `${painting.Title}`;
+            let artistName = document.createElement("p");
+            divPaintingView.appendChild(artistName);
+            artistName.textContent = `${painting.FirstName} ${painting.LastName}`;
+            let galleryName = document.createElement("p");
+            divPaintingView.appendChild(galleryName);
+            galleryName.textContent = `${painting.GalleryName}`;
+            let MuseumLink = document.createElement("a");
+            divPaintingView.appendChild(MuseumLink);
+            MuseumLink.setAttribute("href", `${painting.MuseumLink}`);
+            MuseumLink.textContent = `${painting.GalleryName} link`;
+            let copyright = document.createElement("p");
+            divPaintingView.appendChild(copyright);
+            copyright.textContent = `${painting.CopyrightText}`;
+            let workYear = document.createElement("p");
+            divPaintingView.appendChild(workYear);
+            workYear.textContent = `${painting.YearOfWork}`;
+             
+
+            // Title, FirstName, LastName, Title, GalleryName,
+            // GalleryCity, MuseumLink and (working as a link), CopyrightText, YearOfWork, Width,
+            // Height, Medium, and Description. 
+          }
+        }
+        
       }
       else if(e.target.nodeName == "IMG"){
         console.log("img found");
@@ -240,6 +277,9 @@ function paintingView() {
       }
 
     }
+
+
+
 
     function compareYear(a, b){
       let paintingOne = a.YearOfWork;
