@@ -175,7 +175,7 @@ function populate(e){
 
     }
 
-    function artistClick(e){
+    function artistClick(e) {
       console.log(e.target.id);
       if(e.target.id == "lastName"){
         paintingCall(currGallery, "artists");
