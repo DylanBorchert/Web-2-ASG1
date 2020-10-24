@@ -103,6 +103,13 @@ function populate(e){
 
 }
 
+function paintingView() {
+  const containerGallery = document.querySelector(".containerGallery");
+  const containerView = document.querySelector(".containerView");
+  containerGallery.style.display = "none"
+  containerView.style.display = "grid"
+}
+
     function paintingCall(gallery, sort){
       currGallery = gallery;
         paintingList = [];
