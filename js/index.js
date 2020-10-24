@@ -260,7 +260,11 @@ function paintingView() {
             let workYear = document.createElement("p");
             divPaintingView.appendChild(workYear);
             workYear.textContent = `${painting.YearOfWork}`;
-             
+            
+            let returnButton = document.createElement("p");
+            divPaintingView.appendChild(returnButton);
+            returnButton.textContent = "return";
+            returnButton.addEventListener("click", returnButtonFunction);
 
             // Title, FirstName, LastName, Title, GalleryName,
             // GalleryCity, MuseumLink and (working as a link), CopyrightText, YearOfWork, Width,
@@ -278,7 +282,12 @@ function paintingView() {
 
     }
 
-
+    function returnButtonFunction(){
+      const containerGallery = document.querySelector(".containerGallery");
+      const containerView = document.querySelector(".containerView");
+      containerGallery.style.display = "grid";
+      containerView.style.display = "none";
+    }
 
 
     function compareYear(a, b){
