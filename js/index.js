@@ -241,25 +241,53 @@ function paintingView() {
             console.log("got it");
 
             addImage(painting, divPaintingView, "medium");
+            
             let h2 = document.createElement("h2");
             divPaintingView.appendChild(h2);
-            h2.textContent = `${painting.Title}`;
+            h2.textContent = `Painting Title: ${painting.Title}`;
+            
             let artistName = document.createElement("p");
             divPaintingView.appendChild(artistName);
-            artistName.textContent = `${painting.FirstName} ${painting.LastName}`;
+            artistName.textContent = `Painters Name: ${painting.FirstName} ${painting.LastName}`;
+            
             let galleryName = document.createElement("p");
             divPaintingView.appendChild(galleryName);
-            galleryName.textContent = `${painting.GalleryName}`;
+            galleryName.textContent = `Gallery Name: ${painting.GalleryName}`;
+            
             let MuseumLink = document.createElement("a");
             divPaintingView.appendChild(MuseumLink);
             MuseumLink.setAttribute("href", `${painting.MuseumLink}`);
-            MuseumLink.textContent = `${painting.GalleryName} link`;
+            MuseumLink.textContent = `Link: ${painting.GalleryName}`;
+            
+            let galleryCity = document.createElement("p");
+            divPaintingView.appendChild(galleryCity);
+            galleryCity.textContent = `Gallery City: ${painting.GalleryCity}`;
+            
             let copyright = document.createElement("p");
             divPaintingView.appendChild(copyright);
-            copyright.textContent = `${painting.CopyrightText}`;
+            copyright.textContent = `Copyright: ${painting.CopyrightText}`;
+            
             let workYear = document.createElement("p");
             divPaintingView.appendChild(workYear);
-            workYear.textContent = `${painting.YearOfWork}`;
+            workYear.textContent = `Year Of Work: ${painting.YearOfWork}`;
+            
+            let paintingMedium = document.createElement("p");
+            divPaintingView.appendChild(paintingMedium);
+            paintingMedium.textContent = `Painting Medium: ${painting.Medium}`;
+
+            let paintingWidth = document.createElement("p");
+            divPaintingView.appendChild(paintingWidth);
+            paintingWidth.textContent = `Painting Width: ${painting.Width}`;
+
+            let paintingHeight = document.createElement("p");
+            divPaintingView.appendChild(paintingHeight);
+            paintingHeight.textContent = `Painting Height: ${painting.Height}`;
+
+            let description = document.createElement("p");
+            divPaintingView.appendChild(description);
+            description.textContent = `Description: ${painting.Description}`;
+
+
             
             let returnButton = document.createElement("p");
             divPaintingView.appendChild(returnButton);
