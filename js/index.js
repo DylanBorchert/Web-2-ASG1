@@ -121,14 +121,17 @@ function populate(e){
             table = document.createElement("table");
             paintingContainer.appendChild(table);
             if(sort == "artists"){
+              console.log("artist sort");
               paintingList.sort(compareArtist);
             }
             else if(sort == "title"){
+              console.log("title sort");
               paintingList.sort(compareTitle);
               console.log(paintingList);
             }
             else if(sort == "year"){
-              console.log("year");
+              console.log("year sort");
+              
               paintingList.sort(compareYear);
             }
 
@@ -149,10 +152,13 @@ function populate(e){
                 
 
             }
-           
-             let artistHeader = document.querySelector("#artist");
+            let getTable =  document.querySelector("table");
+            console.log(getTable);
+            getTable.addEventListener("click", tableClicks);
+
+             let artistHeader = document.querySelector("#lastName");
              console.log(artistHeader);
-             let lastNameHeader = document.querySelector("#lastName");
+             let lastNameHeader = document.querySelector("#title");
              console.log(lastNameHeader);
              let yearHeader = document.querySelector("#year");
              console.log(yearHeader);
@@ -210,6 +216,20 @@ function populate(e){
 
     }
 
+    function tableClicks(e){
+      console.log(e.target.nodeName);
+      if(e.target.id == "paintingTitle"){
+        console.log("apinting title found");
+      }
+      else if(e.target.nodeName == "IMG"){
+        console.log("img found");
+      }
+      else if(e.target.nodeName == "TH"){
+        console.log("table header found");
+      }
+
+    }
+
     function compareYear(a, b){
       let paintingOne = a.YearOfWork;
       let paintingTwo = b.YearOfWork;
@@ -259,9 +279,9 @@ function populate(e){
       empty = document.createElement("tr");
       tr.appendChild(empty);
       artist = document.createElement("th");
-      artist.setAttribute("id","artist");
+      artist.setAttribute("id","lastName");
       lastName = document.createElement("th");
-      lastName.setAttribute("id","lastName");
+      lastName.setAttribute("id","title");
       creationYear = document.createElement("th");
       creationYear.setAttribute("id","year");
 
