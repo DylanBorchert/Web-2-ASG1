@@ -73,27 +73,22 @@ function populate(e){
 
         for (let g of gallery){
             if(g.GalleryName == nameList.textContent){                
-                
-                addLI(`Gallery Name: ${g.GalleryName}`, ul);
-                addLI(g.GalleryNativeName, ul);
-                addLI(`${g.GalleryCity}, ${g.GalleryCountry}`, ul);
-                addLI(g.GalleryAddress, ul);
+              addLI(`Gallery Name: ${g.GalleryName}`, ul);  
+              if( g.GalleryName != g.GalleryNativeName) { addLI(`Native Name: ${g.GalleryNativeName}`, ul);}
+              addLI(`${g.GalleryCity}, ${g.GalleryCountry}`, ul);
+              addLI(g.GalleryAddress, ul);
 
-                let listItem = document.createElement('li');
-                let link = document.createElement('a');
-                link.setAttribute('href', `${g.GalleryWebSite}`);
-                link.textContent = "Gallery Web Site";
-                listItem.appendChild(link);
-                ul.appendChild(listItem);
+              let listItem = document.createElement('li');
+              let link = document.createElement('a');
+              link.setAttribute('href', `${g.GalleryWebSite}`);
+              link.textContent = "Gallery Web Site";
+              listItem.appendChild(link);
+              ul.appendChild(listItem);
 
-          
-                changeLocation(g.Latitude,g.Longitude);
+        
+              changeLocation(g.Latitude,g.Longitude);
 
-                paintingCall(g);
-//                console.log(g, "artist");
-
-
-
+              paintingCall(g);
 
 
             }
@@ -125,7 +120,6 @@ function paintingView() {
         .then(data => { 
 
             paintingList.push(...data);
-            
 
             paintingContainer.innerHTML = "";
             table = document.createElement("table");
@@ -144,10 +138,7 @@ function paintingView() {
               
               paintingList.sort(compareYear);
             }
-
-           
             addTH(table);
-          //paintingList.sort(compareArtist);
             for(let painting of paintingList){
                 let tr = document.createElement("tr");
                 table.appendChild(tr);
@@ -431,95 +422,109 @@ function initMap() {
       zoom: 2,
       center: { lat: 0, lng: 50 },
       styles: [
-        { elementType: "geometry", stylers: [{ color: "#D9DCD6" }] },
-        { elementType: "labels.text.fill", stylers: [{ color: "#523735" }] },
-        { elementType: "labels.text.stroke", stylers: [{ color: "#f5f1e6" }] },
         {
-          featureType: "poi",
-          elementType: "geometry",
-          stylers: [{ color: "#dfd2ae" }],
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#193341"
+                }
+            ]
         },
         {
-          featureType: "poi",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#93817c" }],
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#2c5a71"
+                }
+            ]
         },
         {
-          featureType: "poi.park",
-          elementType: "geometry.fill",
-          stylers: [{ color: "#a5b076" }],
+            "featureType": "road",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#29768a"
+                },
+                {
+                    "lightness": -37
+                }
+            ]
         },
         {
-          featureType: "poi.park",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#447530" }],
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#406d80"
+                }
+            ]
         },
         {
-          featureType: "road",
-          elementType: "geometry",
-          stylers: [{ color: "#f5f1e6" }],
+            "featureType": "transit",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#406d80"
+                }
+            ]
         },
         {
-          featureType: "road.arterial",
-          elementType: "geometry",
-          stylers: [{ color: "#fdfcf8" }],
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#3e606f"
+                },
+                {
+                    "weight": 2
+                },
+                {
+                    "gamma": 0.84
+                }
+            ]
         },
         {
-          featureType: "road.highway",
-          elementType: "geometry",
-          stylers: [{ color: "#C03221" }],
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#ffffff"
+                }
+            ]
         },
         {
-          featureType: "road.highway",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#222222" }],
+            "featureType": "administrative",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "weight": 0.6
+                },
+                {
+                    "color": "#1a3541"
+                }
+            ]
         },
         {
-          featureType: "road.highway.controlled_access",
-          elementType: "geometry",
-          stylers: [{ color: "#C03221" }],
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
         },
         {
-          featureType: "road.highway.controlled_access",
-          elementType: "geometry.stroke",
-          stylers: [{ color: "#222222" }],
-        },
-        {
-          featureType: "road.local",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#806b63" }],
-        },
-        {
-          featureType: "transit.line",
-          elementType: "geometry",
-          stylers: [{ color: "#FF8600" }],
-        },
-        {
-          featureType: "transit.line",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#8f7d77" }],
-        },
-        {
-          featureType: "transit.line",
-          elementType: "labels.text.stroke",
-          stylers: [{ color: "#ebe3cd" }],
-        },
-        {
-          featureType: "transit.station",
-          elementType: "geometry",
-          stylers: [{ color: "#dfd2ae" }],
-        },
-        {
-          featureType: "water",
-          elementType: "geometry.fill",
-          stylers: [{ color: "#b9d3c2" }],
-        },
-        {
-          featureType: "water",
-          elementType: "labels.text.fill",
-          stylers: [{ color: "#92998d" }],
-        },
-      ],
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#2c5a71"
+                }
+            ]
+        }
+    ],
     });
 }
 
