@@ -230,7 +230,7 @@ function paintingView() {
         for(let painting of paintingList){
           if (e.target.innerHTML == painting.Title){
             console.log("got it");
-
+            divPaintingView.textContent = "";
             addImage(painting, divPaintingView, "medium");
             
             let h2 = document.createElement("h2");
