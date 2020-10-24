@@ -3,6 +3,7 @@ let paintingList = [];
 let table = "";
 let currGallery = "";
 
+// change one thing and push it like add comment or something 
 // document.querySelector(".containerView").style.display = "none" // hides the 
 
 document.addEventListener("DOMContentLoaded", function() {
