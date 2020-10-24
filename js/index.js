@@ -223,7 +223,7 @@ function populate(e){
       console.log(e.target.nodeName);
       if(e.target.id == "paintingTitle"){
         console.log("pinting title found");
-        
+
       }
       else if(e.target.nodeName == "IMG"){
         console.log("img found");
