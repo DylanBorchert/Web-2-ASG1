@@ -184,7 +184,9 @@ document.addEventListener("DOMContentLoaded", function () {
         paintViewClone.querySelector("#Artist").textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
         paintViewClone.querySelector("#Medium").textContent = `Painting Medium: ${foundPainting.Medium}`;
         paintViewClone.querySelector("#Year").textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
-        paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
+        if(foundPainting.Description) {
+            paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
+        }
         paintViewClone.querySelector("#GalleryName").textContent = `Gallery Name: ${foundPainting.GalleryName}`;
         paintViewClone.querySelector("#GalleryCity").textContent = `Gallery City: ${foundPainting.GalleryCity}`;
         let MuseumLink = paintViewClone.querySelector("#MuseumLink");
@@ -287,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function addFull(painting, imageItem) {
-    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_1000/art/paintings/${painting.ImageFileName}`;
+    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_800/art/paintings/${painting.ImageFileName}`;
 
     imageItem.setAttribute("src", imageURL);
 
