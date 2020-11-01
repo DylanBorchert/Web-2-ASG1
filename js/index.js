@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let listLoader = document.querySelector("#listLoader");
   let paintingLoader = document.querySelector("#paintingLoader");
+  let paintViewLoader = document.querySelector("#paintViewLoader");
   let listOfGalleries = document.querySelector("#listOfGalleries");
   const listGalleryHeader = document.querySelector("#listGalleryHeader");
   const listOfGalleriesArea = document.querySelector("#listOfGalleriesArea");
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let paintings = document.querySelector("#paintings");
   let paintingHeading = document.querySelector("#paintingHeading");
   let paintingArea = document.querySelector("#paintingArea");
+  let paintingView = document.querySelector("#painingView");
   const containerGallery = document.querySelector(".containerGallery");
   const containerView = document.querySelector(".containerView");
 
@@ -163,6 +165,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let divPaintingView = document.querySelector("#painingView");
         
         let paintingTemplate = document.querySelector("#paintingViewTemplate");
+        containerGallery.style.display = "none";
+      containerView.style.display = "grid";
 
         let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
         divPaintingView.textContent = "";
@@ -172,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       
         let paintViewClone = paintingTemplate.content.cloneNode(true);
-        //console.log(paintViewClone.querySelector("#Colour_1"));
+        addFull(foundPainting, paintingView, paintViewClone.querySelector("img"));
 
         let MuseumLink = paintViewClone.querySelector("img");
         MuseumLink.style.width = "500px";
@@ -277,19 +281,20 @@ document.addEventListener("DOMContentLoaded", function () {
         
   }
 
-  function addFull(painting, node, size) {
+  function addFull(painting, node, imageItem) {
+    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_1000/art/paintings/${painting.ImageFileName}`;
 
-    imageURL = `https://res.cloudinary.com/funwebdev/image/upload//art/paintings/${painting.ImageFileName}`;
-    
-    let imageItem = document.createElement("img");
-    node.appendChild(imageItem);
-    
     imageItem.setAttribute("src", imageURL);
     imageItem.style.maxWidth = "300px";
     imageItem.style.height = "auto";
 
-    loadImage(imageURL).then(data =>{
+    paintViewLoader.style.display = "block";
+    paintingView.style.display = "none";
+    loadImage(imageURL).then((data) => {
+        paintViewLoader.style.display = "none";
+        paintingView.style.display = "grid";
       console.log(`image loaded: ${painting.ImageFileName}`);
+      
     });
         
   }
