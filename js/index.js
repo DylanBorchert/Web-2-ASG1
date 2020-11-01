@@ -193,20 +193,27 @@ document.addEventListener("DOMContentLoaded", function () {
         let returnButton = paintViewClone.querySelector("#return");
         returnButton.textContent = "return";
 
+        // color contrast calculation from: https://dev.to/daviddalbusco/generate-contrasting-text-for-your-random-background-color-g0m
+        const textColorContrast = function textColorContrast(red, green, blue) {
+            let contrast = ((red * 299) + (green * 587) + (blue * 114)) / 1000;
+            return contrast >= 128 ? '#000' : '#fff';
+        }
+
+
         //paintViewClone.querySelector(`.color`);
         let index = 1;
         for(let c of foundPainting.JsonAnnotations.dominantColors){
           let colorDiv = paintViewClone.querySelector(`#Colour_${index}`);
-
+            
           colorDiv.style.backgroundColor = `${c.web}`;
-          let name = document.createElement("p");
-          name.textContent = `${c.name}`;
-          colorDiv.appendChild(name);
-          //colorDiv.textContent = `${c.name}`;
+          colorDiv.style.color = textColorContrast(c.color.red, c.color.green, c.color.blue);
+          colorDiv.querySelector(".name").textContent = `${c.name}`;
+          colorDiv.querySelector(".hex").textContent = `${c.web}`;
           
-
           index++;
         }
+
+       
 
         divPaintingView.appendChild(paintViewClone);
 
