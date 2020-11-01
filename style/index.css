@@ -1,85 +1,141 @@
 /* color palet http://colormind.io/bootstrap/ */
 :root {
     --color-1: #3C1874;
-    --color-primary-2: #007CC7;
-    --color-primary-1: #4DA8DA;
-    --color-secondary-2: #12232E;
-    --color-secondary-1: #203647;
-    --color-white-2: #EEFBFB;
-    --color-white-1: #F5F5F5;
-    --color-black-1: #222222;
+    --color-primary-2:#7f5900;
+    --color-primary-1: #ffb300;
+    --color-secondary-2: #7a431d;
+    --color-secondary-1: #de9e48;
+    --color-background-1: #563727;
+    --color-background-2: #372c2e;
+    --color-white-1: #f1ffff;
+    --color-white-2: #bac2c2;
+    --color-black-1: #000000;
+    --color-black-3: #424242;
+    --color-black-2: #121212;
  }
 
 body {
-    /* background from https://www.toptal.com/designers/subtlepatterns/page/6/ */
-    background-image: url("../images/white-waves.png");
-    background-size: auto 700px;
+    /* background from https://www.toptal.com/designers/subtlepatterns/page/14/ */
+    background:#cfcfe6 url("../images/unnamed.jpg");
+    background-size: auto 300px;
+    color: var(--color-white-1)
 }
 
 
 .container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 10vh 68vh;
     width: 90%;
     margin: auto;
+    margin-top: 2vh;
 }
 .containerGallery {
     display: grid;
     grid-template-columns: 2fr 3fr 4fr;
-    grid-template-rows: 35vh 45vh;
+    grid-template-rows: 20vh 65vh;
     grid-gap: 10px;
 }
 
+
 #header {
-    padding: 20px;
-    margin-bottom: 15px;
+    padding: 1.5vh;
+    margin-bottom: 10px;
 }
 
 #header h1{
-    font-size: 30px;
+    font-size: 4vh;
     font-weight: bold;
 }
 
 #header p{
-    font-size: 15px;
+    font-size: 2vh;
 }
+
+#expandList {
+    display: none;
+    position: relative;
+    top: 40vh;
+    bottom: 40vh;
+    padding: 8px;
+}
+
+#expandList {
+    fill: var(--color-primary-1);
+}
+
+
+#expandList:hover {
+    fill: var(--color-primary-2);
+    cursor: pointer;
+}
+
+#collapseList svg {
+    fill: var(--color-primary-1);
+    max-width: 15px;
+    max-height: 15px;
+    padding-right: 10px;
+}
+
+#collapseList svg:hover {
+    fill: var(--color-primary-2);
+    cursor: pointer;
+}
+
+#listGalleryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 5px 5px 0px 0px;
+    top: 0;
+    width: 1fr;
+    max-height: 3%;
+    background: var(--color-background-1);
+    z-index: 2;
+}
+
+#listOfGalleries ul{
+    padding: 5px;
+    margin-top: 5px;
+} 
 
 div#listOfGalleries {
     grid-row: 1/3;
-    overflow: auto;
 }
 
-#listOfGalleries h1 {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 4px;
+#listOfGalleriesArea {
+    overflow: auto;
+    height: 95%;
 }
+
+
 
 #listOfGalleries li{
     cursor: pointer;
     font-size: 14px;
-    padding: 2px;
-    border: 2px solid var(--color-1);
-    background-color: var(--color-primary-1);
-    color: var(--color-white-1);
+    font-weight: 600;
+    padding: 8px;
+    border: 2px solid var(--color-secondary-1);
+    color: var(--color-secondary-1);
+    border-radius: 3px;
     margin: 4px;
-    border-radius: 4px;
 }
 
 #listOfGalleries li:hover{
-    background-color: var(--color-primary-2);
+    background-color: var(--color-black-1);
 }
 
-#galleryInfo li{
-    margin: 10px;
+#galleryInfo {
+    display: none;
 }
 
 #galleryInfo a{
     text-decoration: none;
-    border: 2px solid var(--color-1);
-    background-color: var(--color-primary-1);
-    color: white;
+    border: 2px solid var(--color-secondary-1);
+    color: var(--color-secondary-1);
     width: 110px;
     height: 10px;
     padding: 8px;
@@ -90,13 +146,102 @@ div#listOfGalleries {
 }
 
 #galleryInfo a:hover {
-    background-color: var(--color-primary-2);
+    background-color: var(--color-black-1);
+}
+
+#galleryInfo ul li {
+    padding: 8px 10px;
+}
+
+#galleryInfo ul li:first-child {
+    padding: 8px;
+    width: 3fr;
+    background: var(--color-background-1);
+    border-radius: 5px 5px 0px 0px;
 }
 
 #paintings {
     grid-row: 1/3;
     grid-column: 3/4;
+    font-size: 20px;
+    display: none;
+}
+
+#paintingHeading {
+    display: none;
+    justify-content: flex-start;
+    padding: 7px;
+    font-weight: 400;
+    border-radius: 5px 5px 0px 0px;
+    top: 0;
+    width: 1fr;
+    background: var(--color-background-1);
+    z-index: 2;
+}
+
+#paintingHeading span {
+    cursor: pointer;
+}
+
+#paintingHeading span[id="emptyFlex"] {
+    width: 120px;
+}
+
+#paintingHeading span[id="artist"] {
+    width: 150px;
+}
+
+#paintingHeading span[id="title"] {
+    width: 15vw;
+    flex-grow: 2;
+}
+
+#paintingHeading span[id="year"] {
+    width: 100px;
+    padding-right: 20px;
+}
+
+#paintingArea > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 2px solid var(--color-secondary-1);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}
+
+#paintingArea {
+    display: flex;
+    flex-direction: column;
     overflow: auto;
+    height: 95%;
+}
+
+#paintingArea span[id="paintingArtist"] {
+    width: 140px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#paintingArea span[id="paintingTitle"] {
+    width: 15vw;
+    padding-right: 20px;
+    flex-grow: 2;
+}
+
+#paintingArea span[id="paintingYear"] {
+    width: 100px;
+}
+
+
+#paintingTitle {
+    cursor: pointer;
+    color: var(--color-primary-1);
+}
+
+#paintingTitle:hover {
+    color: var(--color-primary-2);
 }
 
 .containerView {
@@ -106,17 +251,39 @@ div#listOfGalleries {
     display: none;
 }
 
+#galleryMap {
+    grid-row: 1/3;
+    grid-column: 2/4;
+}
+
 #map {
-    height: 45vh;
+    border-radius: 2.5px;
+    height: 84vh; /* 63 defualt */
+    margin: 1vh;
 }
 
 .containerGallery > div, .containerView > div, #header{
-    background-color: var(--color-white-2);
-    box-shadow: 2px 2px 2px black;
+    background-color: var(--color-background-2);
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px black;
 }
 
 /* CSS Loader source: https://hookagency.com/website-color-schemes/ */
+#listLoader {
+    display: none;
+    top: 40vh;
+    bottom: 40vh;
+    z-index: 4;
+}
 
+#paintingLoader {
+    display: none;
+    top: 40vh;
+    bottom: 40vh;
+    z-index: 4;
+}
+
+<<<<<<< HEAD
 .lds-ring {
     display: grid;
     position: relative;
@@ -127,32 +294,94 @@ div#listOfGalleries {
     box-sizing: border-box;
     display: grid;
     position: absolute;
+=======
+.lds-roller {
+    margin:auto;
+    position: relative;
+>>>>>>> bc89ed9bfd92237dd4d39bfed8331d41029617be
     width: 64px;
     height: 64px;
-    margin: 8px;
-    border: 8px solid #cdd422;
+    z-index: 3;
+}
+.lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 32px 32px;
+}
+.lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #c2dde6 transparent transparent transparent;
-
-  }
-  .lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-  .lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  .lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
-  @keyframes lds-ring {
+    background:var(--color-secondary-1);
+    margin: -3px 0 0 -3px;
+}
+.lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+    top: 50px;
+    left: 50px;
+}
+.lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+    top: 54px;
+    left: 45px;
+}
+.lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+    top: 57px;
+    left: 39px;
+}
+.lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+    top: 58px;
+    left: 32px;
+}
+.lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+    top: 57px;
+    left: 25px;
+}
+.lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+    top: 54px;
+    left: 19px;
+}
+.lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+    top: 50px;
+    left: 14px;
+}
+.lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+top: 45px;
+        left: 10px;
+}
+@keyframes lds-roller {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
+
 /* overflow scroll bar style from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_scrollbar2 */
 /* width */
 body ::-webkit-scrollbar {
@@ -161,14 +390,16 @@ body ::-webkit-scrollbar {
 
 /*  Track */
 body ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 2px black; 
+    background-color: var(--color-primary-2); 
     border-radius: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
    
 /* Handle */
 body ::-webkit-scrollbar-thumb {
-    background: var(--color-secondary-2); 
+    background: var(--color-primary-1); 
     border-radius: 4px;
 }
 /* Handle on hover */
