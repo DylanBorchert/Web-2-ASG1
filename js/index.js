@@ -322,9 +322,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-
-
-
 });
 
 var map;
