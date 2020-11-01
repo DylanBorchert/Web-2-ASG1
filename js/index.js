@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let listLoader = document.querySelector("#listLoader");
   let paintingLoader = document.querySelector("#paintingLoader");
+  let paintViewLoader = document.querySelector("#paintViewLoader");
   let listOfGalleries = document.querySelector("#listOfGalleries");
   const listGalleryHeader = document.querySelector("#listGalleryHeader");
   const listOfGalleriesArea = document.querySelector("#listOfGalleriesArea");
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let paintings = document.querySelector("#paintings");
   let paintingHeading = document.querySelector("#paintingHeading");
   let paintingArea = document.querySelector("#paintingArea");
+  let paintingView = document.querySelector("#painingView");
   const containerGallery = document.querySelector(".containerGallery");
   const containerView = document.querySelector(".containerView");
 
@@ -157,20 +159,18 @@ document.addEventListener("DOMContentLoaded", function () {
   function tableClicks(paintingList) {
     paintingArea.addEventListener("click", (e) => {
       if (e.target.id == "paintingTitle") {
-        let divPaintingView = document.querySelector("#painingView");
+        
         let paintingTemplate = document.querySelector("#paintingViewTemplate");
+        containerGallery.style.display = "none";
+      containerView.style.display = "grid";
 
         let foundPainting = paintingList.find(
           (painting) => e.target.innerHTML == painting.Title
         );
-        divPaintingView.textContent = "";
+        paintingView.textContent = "";
 
         let paintViewClone = paintingTemplate.content.cloneNode(true);
-        addFull(
-          foundPainting,
-          divPaintingView,
-          paintViewClone.querySelector("img")
-        );
+        addFull(foundPainting, paintingView, paintViewClone.querySelector("img"));
 
         paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
         paintViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let returnButton = paintViewClone.querySelector("#return");
         returnButton.textContent = "return";
 
-        divPaintingView.appendChild(paintViewClone);
+        paintingView.appendChild(paintViewClone);
 
         returnButton.addEventListener("click", () => {
           containerGallery.style.display = "grid";
@@ -257,16 +257,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function addFull(painting, node, imageItem) {
-    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_200/art/paintings/${painting.ImageFileName}`;
-
-    node.appendChild(imageItem);
+    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_1000/art/paintings/${painting.ImageFileName}`;
 
     imageItem.setAttribute("src", imageURL);
 
+    paintViewLoader.style.display = "block";
+    paintingView.style.display = "none";
     loadImage(imageURL).then((data) => {
+        paintViewLoader.style.display = "none";
+        paintingView.style.display = "grid";
       console.log(`image loaded: ${painting.ImageFileName}`);
-      containerGallery.style.display = "none";
-      containerView.style.display = "grid";
+      
     });
   }
 
