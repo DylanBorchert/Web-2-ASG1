@@ -184,7 +184,9 @@ document.addEventListener("DOMContentLoaded", function () {
         paintViewClone.querySelector("#Artist").textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
         paintViewClone.querySelector("#Medium").textContent = `Painting Medium: ${foundPainting.Medium}`;
         paintViewClone.querySelector("#Year").textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
-        paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
+        if(foundPainting.Description) {
+            paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
+        }
         paintViewClone.querySelector("#GalleryName").textContent = `Gallery Name: ${foundPainting.GalleryName}`;
         paintViewClone.querySelector("#GalleryCity").textContent = `Gallery City: ${foundPainting.GalleryCity}`;
         let MuseumLink = paintViewClone.querySelector("#MuseumLink");
@@ -193,18 +195,27 @@ document.addEventListener("DOMContentLoaded", function () {
         let returnButton = paintViewClone.querySelector("#return");
         returnButton.textContent = "return";
 
+        // color contrast calculation from: https://dev.to/daviddalbusco/generate-contrasting-text-for-your-random-background-color-g0m
+        const textColorContrast = function textColorContrast(red, green, blue) {
+            let contrast = ((red * 299) + (green * 587) + (blue * 114)) / 1000;
+            return contrast >= 128 ? '#000' : '#fff';
+        }
+
+
         //paintViewClone.querySelector(`.color`);
         let index = 1;
         for(let c of foundPainting.JsonAnnotations.dominantColors){
           let colorDiv = paintViewClone.querySelector(`#Colour_${index}`);
-
+            
           colorDiv.style.backgroundColor = `${c.web}`;
-          let name = document.createElement("p");
-          name.textContent = `${c.name}`;
-          colorDiv.appendChild(name);
-          //colorDiv.textContent = `${c.name}`;
+          colorDiv.style.color = textColorContrast(c.color.red, c.color.green, c.color.blue);
+          colorDiv.querySelector(".name").textContent = `${c.name}`;
+          colorDiv.querySelector(".hex").textContent = `${c.web}`;
+          
           index++;
         }
+
+       
 
         divPaintingView.appendChild(paintViewClone);
 
@@ -278,7 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function addFull(painting, imageItem) {
-    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_1000/art/paintings/${painting.ImageFileName}`;
+    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_800/art/paintings/${painting.ImageFileName}`;
 
     imageItem.setAttribute("src", imageURL);
 

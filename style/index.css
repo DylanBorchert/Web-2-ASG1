@@ -18,7 +18,8 @@ body {
     /* background from https://www.toptal.com/designers/subtlepatterns/page/14/ */
     background:#cfcfe6 url("../images/unnamed.jpg");
     background-size: auto 300px;
-    color: var(--color-white-1)
+    color: var(--color-white-1);
+    font-family: 'Archivo', 'Cairo', sans-serif;
 }
 
 
@@ -136,7 +137,7 @@ div#listOfGalleries {
     text-decoration: none;
     border: 2px solid var(--color-secondary-1);
     color: var(--color-secondary-1);
-    width: 110px;
+    width: 120px;
     height: 10px;
     padding: 8px;
     border-radius: 5px;
@@ -272,7 +273,7 @@ div#listOfGalleries {
     display: grid;
     position: relative;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 78vh;
 } 
 
 .containerView #painingView > div {
@@ -286,7 +287,7 @@ div#listOfGalleries {
 }
 
 .containerView #paintingViewImg figure{
-    background: var(--color-background-1);
+    background: var(--color-black-2);
     border: 2px solid var(--color-secondary-1);
     border-radius: 3px;
     position: absolute;
@@ -314,6 +315,14 @@ div#listOfGalleries {
     max-height: 72vh;
 }
 
+#paintingViewText {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 #MuseumLink, #return {
     text-decoration: none;
     border: 2px solid var(--color-secondary-1);
@@ -326,13 +335,26 @@ div#listOfGalleries {
     line-height: 10px;
 }
 
-#MuseumLink {
- width: 110px;
-} 
+
 
 #return {
  width: 60px;
+ margin-bottom: 60px;
 }
+
+#Title {
+    margin-top: 50px;
+}
+
+#Description {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#MuseumLink {
+    margin-top: 8px;
+    width: 120px;
+} 
 
 #MuseumLink:hover {
     background-color: var(--color-black-1);
@@ -344,12 +366,38 @@ div#listOfGalleries {
     cursor: pointer;
 }
 
+#colorContainer {
+    flex-grow: 1;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #colorContainer div {
-    border: 1px solid var(--color-black-2);
     width: 100px;
-    height: 100px;
-    display: inline-block;
-    margin: 5px;
+    height: 250px;
+    position: relative;
+}
+#colorContainer div p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#colorContainer div .name{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#colorContainer div .hex {
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -65%);
 }
 
 /* CSS Loader source: https://hookagency.com/website-color-schemes/ */
