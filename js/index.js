@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
         containerGallery.style.display = "none";
         containerView.style.display = "grid";
         let divPaintingView = document.querySelector("#painingView");
+        
         let paintingTemplate = document.querySelector("#paintingViewTemplate");
 
         let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
@@ -169,10 +170,12 @@ document.addEventListener("DOMContentLoaded", function () {
         //TODO: Will have to change this to work with the template??
         addFull(foundPainting, divPaintingView);
 
-
+      
         let paintViewClone = paintingTemplate.content.cloneNode(true);
+        //console.log(paintViewClone.querySelector("#Colour_1"));
 
         let MuseumLink = paintViewClone.querySelector("img");
+        MuseumLink.style.width = "500px";
         MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
         paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
         paintViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
@@ -188,23 +191,27 @@ document.addEventListener("DOMContentLoaded", function () {
         let returnButton = paintViewClone.querySelector("#return");
         returnButton.textContent = "return";
 
-        divPaintingView.appendChild(paintViewClone);
-
+        //paintViewClone.querySelector(`.color`);
         let index = 1;
         for(let c of foundPainting.JsonAnnotations.dominantColors){
-        console.log(paintViewClone.querySelector(`#colorContainer > #Colour_${index}`));
-        index++;
+          let colorDiv = paintViewClone.querySelector(`#Colour_${index}`);
+
+          colorDiv.style.backgroundColor = `${c.web}`;
+          let name = document.createElement("p");
+          name.textContent = `${c.name}`;
+          colorDiv.appendChild(name);
+          //colorDiv.textContent = `${c.name}`;
+          
+
+          index++;
         }
+
+        divPaintingView.appendChild(paintViewClone);
 
         returnButton.addEventListener("click", () => {
             containerGallery.style.display = "grid";
             containerView.style.display = "none";
         });
-      // let index = 1;
-      // for(let c of foundPainting.JsonAnnotations.dominantColors){
-      // console.log(paintViewClone.querySelector(`#colorContainer > #Colour_${index}`));
-      // index++;
-      // }
 
     }
   });
@@ -278,6 +285,8 @@ document.addEventListener("DOMContentLoaded", function () {
     node.appendChild(imageItem);
     
     imageItem.setAttribute("src", imageURL);
+    imageItem.style.maxWidth = "300px";
+    imageItem.style.height = "auto";
 
     loadImage(imageURL).then(data =>{
       console.log(`image loaded: ${painting.ImageFileName}`);

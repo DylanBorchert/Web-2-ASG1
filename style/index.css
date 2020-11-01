@@ -393,3 +393,33 @@ body ::-webkit-scrollbar-thumb {
 body ::-webkit-scrollbar-thumb:hover {
 background: var(--color-secondary-1); 
 }
+
+.color {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+}
+
+.paintingViewText{
+    display: inline-block;
+    justify-content: right;
+}
+
+.painingView{
+    display: inline-block;
+    justify-content: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
