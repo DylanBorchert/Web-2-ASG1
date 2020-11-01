@@ -344,6 +344,14 @@ div#listOfGalleries {
     cursor: pointer;
 }
 
+#colorContainer div {
+    border: 1px solid var(--color-black-2);
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 5px;
+}
+
 /* CSS Loader source: https://hookagency.com/website-color-schemes/ */
 #listLoader {
     display: none;
