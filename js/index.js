@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
       addFull(foundPainting, divPaintingView);
 
 
-      let paintViewClone = paintingTemplate.content.cloneNode(true);
+      let paintingViewClone = paintingTemplate.content.cloneNode(true);
 
       //>>>>>>>>>>>>>>>>>>>>>>>>>template>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       //let h2 = document.createElement("h2");
