@@ -156,42 +156,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function tableClicks(paintingList) {
-<<<<<<< HEAD
     paintingArea.addEventListener("click", (e) => {
       if (e.target.id == "paintingTitle") {
         
-=======
-    paintingArea.addEventListener("click",(e) => {
-    if (e.target.id == "paintingTitle") {
-      
-      
-        containerGallery.style.display = "none";
-        containerView.style.display = "grid";
-        let divPaintingView = document.querySelector("#painingView");
->>>>>>> 6c1c42d42561e175391ff7650e4837fb0332e16b
         let paintingTemplate = document.querySelector("#paintingViewTemplate");
         containerGallery.style.display = "none";
       containerView.style.display = "grid";
 
-<<<<<<< HEAD
-        let foundPainting = paintingList.find(
-          (painting) => e.target.innerHTML == painting.Title
-        );
-        paintingView.textContent = "";
-=======
         let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
         divPaintingView.textContent = "";
->>>>>>> 6c1c42d42561e175391ff7650e4837fb0332e16b
 
         //TODO: Will have to change this to work with the template??
         addFull(foundPainting, divPaintingView);
 
 
         let paintViewClone = paintingTemplate.content.cloneNode(true);
-<<<<<<< HEAD
         addFull(foundPainting, paintingView, paintViewClone.querySelector("img"));
-=======
->>>>>>> 6c1c42d42561e175391ff7650e4837fb0332e16b
 
         let MuseumLink = paintViewClone.querySelector("img");
         MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
@@ -291,7 +271,6 @@ document.addEventListener("DOMContentLoaded", function () {
         
   }
 
-<<<<<<< HEAD
   function addFull(painting, node, imageItem) {
     imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_1000/art/paintings/${painting.ImageFileName}`;
 
@@ -304,19 +283,6 @@ document.addEventListener("DOMContentLoaded", function () {
         paintingView.style.display = "grid";
       console.log(`image loaded: ${painting.ImageFileName}`);
       
-=======
-  function addFull(painting, node, size) {
-
-    imageURL = `https://res.cloudinary.com/funwebdev/image/upload//art/paintings/${painting.ImageFileName}`;
-    
-    let imageItem = document.createElement("img");
-    node.appendChild(imageItem);
-    
-    imageItem.setAttribute("src", imageURL);
-
-    loadImage(imageURL).then(data =>{
-      console.log(`image loaded: ${painting.ImageFileName}`);
->>>>>>> 6c1c42d42561e175391ff7650e4837fb0332e16b
     });
         
   }
