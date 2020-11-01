@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const list = document.createElement("ul");
     for (let g of gallery) {
+        addMarker(g.Latitude, g.Longitude)
       let item = document.createElement("li");
       item.textContent = g.GalleryName;
       list.appendChild(item);
@@ -320,8 +321,8 @@ document.addEventListener("DOMContentLoaded", function () {
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 2,
-    center: { lat: 0, lng: 50 },
+    zoom: 3,
+    center: { lat: 40, lng: -20 },
     styles: [
       {
           "featureType": "all",
@@ -591,12 +592,27 @@ function initMap() {
   });
 }
 
+function addMarker (latValue, lngValue){
+    const myMarker = {
+        path:
+          "M332.544,337.733c55.548-72.281,84.909-133.231,84.909-176.26C417.453,72.437,345.016,0,255.979,0   C166.942,0,94.505,72.437,94.505,161.474c0,43.364,29.434,104.498,85.12,176.79c30.295,39.33,60.813,72.044,76.333,88.069   C271.523,410.203,302.2,377.217,332.544,337.733z M163.973,159.446c0-50.732,41.273-92.006,92.006-92.006   c50.732,0,92.005,41.273,92.005,92.006s-41.273,92.006-92.005,92.006C205.247,251.452,163.973,210.179,163.973,159.446z",
+        fillColor: "#ffb300",
+        fillOpacity: 1,
+        scale: 0.07,
+        strokeColor: "#de9e48",
+        strokeWeight: 1,
+        anchor: new google.maps.Point(256, 500),
+    };
+    new google.maps.Marker({
+        position: { lat: latValue, lng: lngValue },
+        map: map,
+        icon: myMarker,
+    });
+
+}
+
 function changeLocation(latValue, lngValue) {
   myLatLng = new google.maps.LatLng({ lat: latValue, lng: lngValue });
-  new google.maps.Marker({
-    position: { lat: latValue, lng: lngValue },
-    map: map,
-  });
   map.panTo(myLatLng);
   map.setZoom(18);
 }
