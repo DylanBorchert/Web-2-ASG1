@@ -122,11 +122,16 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((paintingList) => {
         paintingArea.textContent = "";
+<<<<<<< HEAD
 
         const sortPaintingList = function sortPaintingList(
           paintingOne,
           paintingTwo
         ) {
+=======
+      console.log(currGallery);
+        const sortPaintingList = function sortPaintingList(paintingOne, paintingTwo) {
+>>>>>>> 52a897b1a42f63094ca216619820833f0bbda054
           if (paintingOne > paintingTwo) {
             return 1;
           } else if (paintingOne < paintingTwo) {
