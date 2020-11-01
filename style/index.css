@@ -283,9 +283,22 @@ div#listOfGalleries {
     z-index: 4;
 }
 
+<<<<<<< HEAD
+.lds-ring {
+    display: grid;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: grid;
+    position: absolute;
+=======
 .lds-roller {
     margin:auto;
     position: relative;
+>>>>>>> bc89ed9bfd92237dd4d39bfed8331d41029617be
     width: 64px;
     height: 64px;
     z-index: 3;
