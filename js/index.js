@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // let workYear = document.createElement("p");
       // divPaintingView.appendChild(workYear);
       // workYear.textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
-      paintViewClone.querySelector("#Year") = `Year Of Work: ${foundPainting.YearOfWork}`;
+      paintViewClone.querySelector("#Year").textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
       
 
       // let paintingMedium = document.createElement("p");
