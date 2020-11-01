@@ -164,17 +164,13 @@ document.addEventListener("DOMContentLoaded", function () {
       containerView.style.display = "grid";
 
         let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
-        divPaintingView.textContent = "";
-
-        //TODO: Will have to change this to work with the template??
-        addFull(foundPainting, divPaintingView);
+        paintingView.textContent = "";
 
 
         let paintViewClone = paintingTemplate.content.cloneNode(true);
         addFull(foundPainting, paintingView, paintViewClone.querySelector("img"));
 
-        let MuseumLink = paintViewClone.querySelector("img");
-        MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
+        
         paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
         paintViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
         paintViewClone.querySelector("#Copyright").textContent = `Copyright: ${foundPainting.CopyrightText}`;
@@ -186,6 +182,9 @@ document.addEventListener("DOMContentLoaded", function () {
         paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
         paintViewClone.querySelector("#GalleryName").textContent = `Gallery Name: ${foundPainting.GalleryName}`;
         paintViewClone.querySelector("#GalleryCity").textContent = `Gallery City: ${foundPainting.GalleryCity}`;
+        let MuseumLink = paintViewClone.querySelector("#MuseumLink");
+        MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
+        MuseumLink.textContent = "Gallery Web Site";
         let returnButton = paintViewClone.querySelector("#return");
         returnButton.textContent = "return";
 
