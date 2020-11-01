@@ -203,8 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
           name.textContent = `${c.name}`;
           colorDiv.appendChild(name);
           //colorDiv.textContent = `${c.name}`;
-          
-
           index++;
         }
 
