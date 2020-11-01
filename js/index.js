@@ -176,23 +176,23 @@ document.addEventListener("DOMContentLoaded", function () {
       //let h2 = document.createElement("h2");
       //divPaintingView.appendChild(h2);
       //h2.textContent = `Painting Title: ${foundPainting.Title}`;
-      paintingViewClone.querySelector("#Title").textContent = `Painting Title: ${foundPainting.Title}`;
+      paintViewClone.querySelector("#Title").textContent = `Painting Title: ${foundPainting.Title}`;
 
       //let artistName = document.createElement("p");
       //divPaintingView.appendChild(artistName);
       //artistName.textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
-      paintingViewClone.querySelector("#Artist").textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
+      paintViewClone.querySelector("#Artist").textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
 
       // let galleryName = document.createElement("p");
       // divPaintingView.appendChild(galleryName);
       // galleryName.textContent = `Gallery Name: ${foundPainting.GalleryName}`;
-      paintingViewClone.querySelector("#GalleryName").textContent = `Gallery Name: ${foundPainting.GalleryName}`;
+      paintViewClone.querySelector("#GalleryName").textContent = `Gallery Name: ${foundPainting.GalleryName}`;
 
       //let MuseumLink = document.createElement("a");
       //divPaintingView.appendChild(MuseumLink);
       //MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
       //MuseumLink.textContent = `Link: ${foundPainting.GalleryName}`;
-      let MuseumLink = paintingViewClone.querySelector("img");
+      let MuseumLink = paintViewClone.querySelector("img");
       MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
       MuseumLink.textContent = `Link: ${foundPainting.GalleryName}`;
 
@@ -200,43 +200,43 @@ document.addEventListener("DOMContentLoaded", function () {
       // let galleryCity = document.createElement("p");
       // divPaintingView.appendChild(galleryCity);
       // galleryCity.textContent = `Gallery City: ${foundPainting.GalleryCity}`;
-      paintingViewClone.querySelector("#GalleryCity").textContent = `Gallery City: ${foundPainting.GalleryCity}`;
+      paintViewClone.querySelector("#GalleryCity").textContent = `Gallery City: ${foundPainting.GalleryCity}`;
 
       // let copyright = document.createElement("p");
       // divPaintingView.appendChild(copyright);
       // copyright.textContent = `Copyright: ${foundPainting.CopyrightText}`;
-      paintingViewClone.querySelector("#Copyright").textContent = `Copyright: ${foundPainting.CopyrightText}`;
+      paintViewClone.querySelector("#Copyright").textContent = `Copyright: ${foundPainting.CopyrightText}`;
 
       // let workYear = document.createElement("p");
       // divPaintingView.appendChild(workYear);
       // workYear.textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
-      paintingViewClone.querySelector("#Year") = `Year Of Work: ${foundPainting.YearOfWork}`;
+      paintViewClone.querySelector("#Year") = `Year Of Work: ${foundPainting.YearOfWork}`;
       
 
       // let paintingMedium = document.createElement("p");
       // divPaintingView.appendChild(paintingMedium);
       // paintingMedium.textContent = `Painting Medium: ${foundPainting.Medium}`;
-      paintingViewClone.querySelector("#Medium").textContent = `Painting Medium: ${foundPainting.Medium}`;
+      paintViewClone.querySelector("#Medium").textContent = `Painting Medium: ${foundPainting.Medium}`;
 
       // let paintingWidth = document.createElement("p");
       // divPaintingView.appendChild(paintingWidth);
       // paintingWidth.textContent = `Painting Width: ${foundPainting.Width}`;
-      paintingViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
+      paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
 
       // let paintingHeight = document.createElement("p");
       // divPaintingView.appendChild(paintingHeight);
       // paintingHeight.textContent = `Painting Height: ${foundPainting.Height}`;
-      paintingViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
+      paintViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
 
       // let description = document.createElement("p");
       // divPaintingView.appendChild(description);
       // description.textContent = `Description: ${foundPainting.Description}`;
-      paintingViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
+      paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
 
       // let returnButton = document.createElement("p");
       // divPaintingView.appendChild(returnButton);
       // returnButton.textContent = "return";
-      let returnButton = paintingViewClone.querySelector("#return");
+      let returnButton = paintViewClone.querySelector("#return");
       returnButton.textContent = "return";
 
       returnButton.addEventListener("click", () => {
