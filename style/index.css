@@ -33,7 +33,7 @@ body {
 .containerGallery {
     display: grid;
     grid-template-columns: 2fr 3fr 4fr;
-    grid-template-rows: 180px 65vh;
+    grid-template-rows: 180px 58vh;
     grid-gap: 10px;
 }
 
@@ -215,7 +215,7 @@ div#listOfGalleries {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    height: 95%;
+    height: 94%;
 }
 
 #paintingArea span[id="paintingArtist"] {
