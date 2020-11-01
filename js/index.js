@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(galleryLink).then((response) => response.json()).then((paintingList) => {
 
         paintingArea.textContent = "";
-
+      console.log(currGallery);
         const sortPaintingList = function sortPaintingList(paintingOne, paintingTwo) {
           if (paintingOne > paintingTwo) {
             return 1;
@@ -245,6 +245,11 @@ document.addEventListener("DOMContentLoaded", function () {
         containerGallery.style.display = "grid";
         containerView.style.display = "none";
       });
+      // let index = 1;
+      // for(let c of foundPainting.JsonAnnotations.dominantColors){
+      // console.log(paintViewClone.querySelector(`#${Colour} #${index}`));
+      // index++;
+      // }
           //>>>>>>>>>>>>>>>>>>>>>>>>>template>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
           // Title, FirstName, LastName, Title, GalleryName,
