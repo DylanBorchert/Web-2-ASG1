@@ -322,6 +322,7 @@ div#listOfGalleries {
 .containerView #paintingViewImg img:hover {
     filter: brightness(0.4);
     transform: scale(1.01);
+    cursor: pointer;
 }
 
 #paintingViewText {
