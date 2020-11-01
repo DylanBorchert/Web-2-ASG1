@@ -156,8 +156,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function tableClicks(paintingList) {
-    paintingArea.addEventListener("click", (e) => {
-      if (e.target.id == "paintingTitle") {
+    paintingArea.addEventListener("click",(e) => {
+    if (e.target.id == "paintingTitle") {
+      
+      
+        containerGallery.style.display = "none";
+        containerView.style.display = "grid";
+        let divPaintingView = document.querySelector("#painingView");
         
         let paintingTemplate = document.querySelector("#paintingViewTemplate");
         containerGallery.style.display = "none";
@@ -166,11 +171,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
         paintingView.textContent = "";
 
-
+      
         let paintViewClone = paintingTemplate.content.cloneNode(true);
-        addFull(foundPainting, paintingView, paintViewClone.querySelector("img"));
+        addFull(foundPainting, paintViewClone.querySelector("img"));
 
-        
+    
         paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
         paintViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
         paintViewClone.querySelector("#Copyright").textContent = `Copyright: ${foundPainting.CopyrightText}`;
@@ -188,23 +193,27 @@ document.addEventListener("DOMContentLoaded", function () {
         let returnButton = paintViewClone.querySelector("#return");
         returnButton.textContent = "return";
 
-        paintingView.appendChild(paintViewClone);
-
+        //paintViewClone.querySelector(`.color`);
         let index = 1;
         for(let c of foundPainting.JsonAnnotations.dominantColors){
-        console.log(paintViewClone.querySelector(`#colorContainer > #Colour_${index}`));
-        index++;
+          let colorDiv = paintViewClone.querySelector(`#Colour_${index}`);
+
+          colorDiv.style.backgroundColor = `${c.web}`;
+          let name = document.createElement("p");
+          name.textContent = `${c.name}`;
+          colorDiv.appendChild(name);
+          //colorDiv.textContent = `${c.name}`;
+          
+
+          index++;
         }
+
+        divPaintingView.appendChild(paintViewClone);
 
         returnButton.addEventListener("click", () => {
             containerGallery.style.display = "grid";
             containerView.style.display = "none";
         });
-      // let index = 1;
-      // for(let c of foundPainting.JsonAnnotations.dominantColors){
-      // console.log(paintViewClone.querySelector(`#colorContainer > #Colour_${index}`));
-      // index++;
-      // }
 
     }
   });
@@ -270,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
   }
 
-  function addFull(painting, node, imageItem) {
+  function addFull(painting, imageItem) {
     imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_1000/art/paintings/${painting.ImageFileName}`;
 
     imageItem.setAttribute("src", imageURL);
