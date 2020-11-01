@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.target.nodeName.toLowerCase() == "li") {
 
         let map = document.querySelector("#map");
-        map.style.height = "63vh";
+        map.style.height = "56vh";
         let galleryMap = document.querySelector("#galleryMap");
         galleryMap.style.gridRow = "2/3";
         galleryMap.style.gridColumn = "2/3";
