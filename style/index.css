@@ -270,14 +270,14 @@ div#listOfGalleries {
     display: none;
 }
 
-.containerView #painingView{
+.containerView #paintingView{
     display: grid;
     position: relative;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 78vh;
 } 
 
-.containerView #painingView > div {
+.containerView #paintingView > div {
     /* border: 1px solid yellow; */
 }
 
@@ -311,9 +311,17 @@ div#listOfGalleries {
     font-size: 18px;
 }
 
+/*image effects https://w3bits.com/css-image-hover-zoom/*/
 .containerView #paintingViewImg img {
     max-width: 28vw;
     max-height: 72vh;
+    transition: transform .5s, filter .5s ease-in-out;
+    filter: brightness(1);
+}
+
+.containerView #paintingViewImg img:hover {
+    filter: brightness(0.4);
+    transform: scale(1.01);
 }
 
 #paintingViewText {
@@ -376,6 +384,7 @@ div#listOfGalleries {
 }
 
 #colorContainer div {
+    border-radius: 4px;
     width: 7vw;
     height: 25vh;
     position: relative;
@@ -395,17 +404,17 @@ div#listOfGalleries {
 #colorContainer div .name{
     text-align: center;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
 }
 
 #colorContainer div .hex {
     text-align: center;
     position: absolute;
-    top: 65%;
+    top: 60%;
     left: 50%;
-    transform: translate(-50%, -65%);
+    transform: translate(-50%, -60%);
 }
 
 /* CSS Loader source: https://hookagency.com/website-color-schemes/ */
@@ -547,7 +556,7 @@ background: var(--color-secondary-1);
     justify-content: right;
 }
 
-.painingView{
+.paintingView{
     display: inline-block;
     justify-content: left;
 }

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let paintings = document.querySelector("#paintings");
   let paintingHeading = document.querySelector("#paintingHeading");
   let paintingArea = document.querySelector("#paintingArea");
-  let paintingView = document.querySelector("#painingView");
+  let paintingView = document.querySelector("#paintingView");
   const containerGallery = document.querySelector(".containerGallery");
   const containerView = document.querySelector(".containerView");
 
@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let expandList = document.querySelector("#expandList");
 
   collapseList.addEventListener('click', (e) => {
+    listOfGalleries.style.border = "3px solid var(--color-secondary-1)"
     listGalleryHeader.style.display = "none";
     listOfGalleriesArea.style.display = "none";
     containerGallery.style.gridTemplateColumns = "75px 3fr 4fr";
@@ -99,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   expandList.addEventListener('click', (e) => {
+    listOfGalleries.style.border = "none"
     listGalleryHeader.style.display = "flex";
     listOfGalleriesArea.style.display = "block";
     containerGallery.style.gridTemplateColumns = "2fr 3fr 4fr";
@@ -163,14 +165,13 @@ document.addEventListener("DOMContentLoaded", function () {
       
         containerGallery.style.display = "none";
         containerView.style.display = "grid";
-        let divPaintingView = document.querySelector("#painingView");
         
         let paintingTemplate = document.querySelector("#paintingViewTemplate");
         containerGallery.style.display = "none";
       containerView.style.display = "grid";
 
         let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
-        paintingView.textContent = "";
+        paintingView.innerHTML = "";
 
       
         let paintViewClone = paintingTemplate.content.cloneNode(true);
@@ -237,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        
 
-        divPaintingView.appendChild(paintViewClone);
+        paintingView.appendChild(paintViewClone);
 
         returnButton.addEventListener("click", () => {
             containerGallery.style.display = "grid";
