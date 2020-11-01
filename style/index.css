@@ -311,9 +311,17 @@ div#listOfGalleries {
     font-size: 18px;
 }
 
+/*image effects https://w3bits.com/css-image-hover-zoom/*/
 .containerView #paintingViewImg img {
     max-width: 28vw;
     max-height: 72vh;
+    transition: transform .5s, filter .5s ease-in-out;
+    filter: brightness(1);
+}
+
+.containerView #paintingViewImg img:hover {
+    filter: brightness(0.4);
+    transform: scale(1.01);
 }
 
 #paintingViewText {
