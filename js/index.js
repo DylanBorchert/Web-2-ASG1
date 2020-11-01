@@ -158,108 +158,45 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.target.id == "paintingTitle") {
       
       
-      containerGallery.style.display = "none";
-      containerView.style.display = "grid";
-      let divPaintingView = document.querySelector("#painingView");
-      let paintingTemplate = document.querySelector("#paintingViewTemplate");
+        containerGallery.style.display = "none";
+        containerView.style.display = "grid";
+        let divPaintingView = document.querySelector("#painingView");
+        let paintingTemplate = document.querySelector("#paintingViewTemplate");
 
-      let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
-      divPaintingView.textContent = "";
+        let foundPainting = paintingList.find(painting => e.target.innerHTML == painting.Title);
+        divPaintingView.textContent = "";
 
-      //TODO: Will have to change this to work with the template??
-      addFull(foundPainting, divPaintingView);
-
-
-      let paintViewClone = paintingTemplate.content.cloneNode(true);
-
-      //>>>>>>>>>>>>>>>>>>>>>>>>>template>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-      //let h2 = document.createElement("h2");
-      //divPaintingView.appendChild(h2);
-      //h2.textContent = `Painting Title: ${foundPainting.Title}`;
-      paintViewClone.querySelector("#Title").textContent = `Painting Title: ${foundPainting.Title}`;
-
-      //let artistName = document.createElement("p");
-      //divPaintingView.appendChild(artistName);
-      //artistName.textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
-      paintViewClone.querySelector("#Artist").textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
-
-      // let galleryName = document.createElement("p");
-      // divPaintingView.appendChild(galleryName);
-      // galleryName.textContent = `Gallery Name: ${foundPainting.GalleryName}`;
-      paintViewClone.querySelector("#GalleryName").textContent = `Gallery Name: ${foundPainting.GalleryName}`;
-
-      //let MuseumLink = document.createElement("a");
-      //divPaintingView.appendChild(MuseumLink);
-      //MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
-      //MuseumLink.textContent = `Link: ${foundPainting.GalleryName}`;
-      let MuseumLink = paintViewClone.querySelector("img");
-      MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
-      MuseumLink.textContent = `Link: ${foundPainting.GalleryName}`;
+        //TODO: Will have to change this to work with the template??
+        addFull(foundPainting, divPaintingView);
 
 
-      // let galleryCity = document.createElement("p");
-      // divPaintingView.appendChild(galleryCity);
-      // galleryCity.textContent = `Gallery City: ${foundPainting.GalleryCity}`;
-      paintViewClone.querySelector("#GalleryCity").textContent = `Gallery City: ${foundPainting.GalleryCity}`;
+        let paintViewClone = paintingTemplate.content.cloneNode(true);
 
-      // let copyright = document.createElement("p");
-      // divPaintingView.appendChild(copyright);
-      // copyright.textContent = `Copyright: ${foundPainting.CopyrightText}`;
-      paintViewClone.querySelector("#Copyright").textContent = `Copyright: ${foundPainting.CopyrightText}`;
+        let MuseumLink = paintViewClone.querySelector("img");
+        MuseumLink.setAttribute("href", `${foundPainting.MuseumLink}`);
+        paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
+        paintViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
+        paintViewClone.querySelector("#Copyright").textContent = `Copyright: ${foundPainting.CopyrightText}`;
 
-      // let workYear = document.createElement("p");
-      // divPaintingView.appendChild(workYear);
-      // workYear.textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
-      paintViewClone.querySelector("#Year").textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
-      
+        paintViewClone.querySelector("#Title").textContent = `Painting Title: ${foundPainting.Title}`;
+        paintViewClone.querySelector("#Artist").textContent = `Painters Name: ${foundPainting.FirstName} ${foundPainting.LastName}`;
+        paintViewClone.querySelector("#Medium").textContent = `Painting Medium: ${foundPainting.Medium}`;
+        paintViewClone.querySelector("#Year").textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
+        paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
+        paintViewClone.querySelector("#GalleryName").textContent = `Gallery Name: ${foundPainting.GalleryName}`;
+        paintViewClone.querySelector("#GalleryCity").textContent = `Gallery City: ${foundPainting.GalleryCity}`;
+        let returnButton = paintViewClone.querySelector("#return");
+        returnButton.textContent = "return";
 
-      // let paintingMedium = document.createElement("p");
-      // divPaintingView.appendChild(paintingMedium);
-      // paintingMedium.textContent = `Painting Medium: ${foundPainting.Medium}`;
-      paintViewClone.querySelector("#Medium").textContent = `Painting Medium: ${foundPainting.Medium}`;
+        divPaintingView.appendChild(paintViewClone);
 
-      // let paintingWidth = document.createElement("p");
-      // divPaintingView.appendChild(paintingWidth);
-      // paintingWidth.textContent = `Painting Width: ${foundPainting.Width}`;
-      paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
-
-      // let paintingHeight = document.createElement("p");
-      // divPaintingView.appendChild(paintingHeight);
-      // paintingHeight.textContent = `Painting Height: ${foundPainting.Height}`;
-      paintViewClone.querySelector("#Height").textContent = `${foundPainting.Height}`;
-
-      // let description = document.createElement("p");
-      // divPaintingView.appendChild(description);
-      // description.textContent = `Description: ${foundPainting.Description}`;
-      paintViewClone.querySelector("#Description").textContent = `Description: ${foundPainting.Description}`;
-
-      // let returnButton = document.createElement("p");
-      // divPaintingView.appendChild(returnButton);
-      // returnButton.textContent = "return";
-      let returnButton = paintViewClone.querySelector("#return");
-      returnButton.textContent = "return";
-
-      divPaintingView.appendChild(paintViewClone);
-
-      returnButton.addEventListener("click", () => {
-        containerGallery.style.display = "grid";
-        containerView.style.display = "none";
-      });
-      // let index = 1;
-      // for(let c of foundPainting.JsonAnnotations.dominantColors){
-      // console.log(paintViewClone.querySelector(`#${Colour} #${index}`));
-      // index++;
-      // }
-          //>>>>>>>>>>>>>>>>>>>>>>>>>template>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-          // Title, FirstName, LastName, Title, GalleryName,
-          // GalleryCity, MuseumLink and (working as a link), CopyrightText, YearOfWork, Width,
-          // Height, Medium, and Description.
+        returnButton.addEventListener("click", () => {
+            containerGallery.style.display = "grid";
+            containerView.style.display = "none";
+        });
     }
   });
 }
-
-  
 
   function addHeading(paintingHeading) {
     paintingHeading.innerHTML = "";
