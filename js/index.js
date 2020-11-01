@@ -194,6 +194,12 @@ document.addEventListener("DOMContentLoaded", function () {
             containerGallery.style.display = "grid";
             containerView.style.display = "none";
         });
+      let index = 1;
+      for(let c of foundPainting.JsonAnnotations.dominantColors){
+      paintViewClone.querySelector(`#Colour#${index}`);
+      index++;
+      }
+
     }
   });
 }
