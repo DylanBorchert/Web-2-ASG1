@@ -118,14 +118,14 @@ div#listOfGalleries {
 /* CSS Loader source: https://hookagency.com/website-color-schemes/ */
 
 .lds-ring {
-    display: inline-block;
+    display: grid;
     position: relative;
     width: 80px;
     height: 80px;
   }
   .lds-ring div {
     box-sizing: border-box;
-    display: block;
+    display: grid;
     position: absolute;
     width: 64px;
     height: 64px;
