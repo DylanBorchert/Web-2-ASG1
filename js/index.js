@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(galleryLink).then((response) => response.json()).then((paintingList) => {
 
         paintingArea.textContent = "";
-      console.log(currGallery);
+      //console.log(currGallery);
         const sortPaintingList = function sortPaintingList(paintingOne, paintingTwo) {
           if (paintingOne > paintingTwo) {
             return 1;
@@ -174,7 +174,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
       
         let paintViewClone = paintingTemplate.content.cloneNode(true);
-        addFull(foundPainting, paintViewClone.querySelector("img"));
+        let baseImg = paintViewClone.querySelector("img");
+        addFull(foundPainting, baseImg);
+
+        let bigImage = document.createElement("img");
+        let paintContainter = document.querySelector("#LargePainting");
+        console.log(paintContainter);
+        paintContainter.appendChild(bigImage);
+        addFull(foundPainting, bigImage);
+        bigImage.setAttribute("id", "image");
+        let closeButton = document.querySelector("#closeButton");
+        closeButton.textContent = "close";
+        closeButton.addEventListener("click", function(){
+          paintContainter.style.display = "none";
+        });
+
+       // let paintViewClone.querySelector("#LargePainting > img");
+        //console.log();
+        baseImg.addEventListener("click", function(e){
+          paintContainter.style.display = "block";
+        });
 
     
         paintViewClone.querySelector("#Width").textContent = `${foundPainting.Width}`;
@@ -299,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadImage(imageURL).then((data) => {
         paintViewLoader.style.display = "none";
         paintingView.style.display = "grid";
-      console.log(`image loaded: ${painting.ImageFileName}`);
+      //console.log(`image loaded: ${painting.ImageFileName}`);
       
     });
         
