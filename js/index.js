@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
       addFull(foundPainting, divPaintingView);
 
 
-      let paintingViewClone = paintingTemplate.content.cloneNode(true);
+      let paintViewClone = paintingTemplate.content.cloneNode(true);
 
       //>>>>>>>>>>>>>>>>>>>>>>>>>template>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
       //let h2 = document.createElement("h2");
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // let workYear = document.createElement("p");
       // divPaintingView.appendChild(workYear);
       // workYear.textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
-      paintViewClone.querySelector("#Year") = `Year Of Work: ${foundPainting.YearOfWork}`;
+      paintViewClone.querySelector("#Year").textContent = `Year Of Work: ${foundPainting.YearOfWork}`;
       
 
       // let paintingMedium = document.createElement("p");
@@ -238,6 +238,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // returnButton.textContent = "return";
       let returnButton = paintViewClone.querySelector("#return");
       returnButton.textContent = "return";
+
+      divPaintingView.appendChild(paintViewClone);
 
       returnButton.addEventListener("click", () => {
         containerGallery.style.display = "grid";
