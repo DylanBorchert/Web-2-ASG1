@@ -258,7 +258,11 @@ div#listOfGalleries {
 
 #map {
     border-radius: 2.5px;
+<<<<<<< HEAD
     height: calc(180px + 57vh); /* 63 defualt */
+=======
+    height: 85vh; /* 63 defualt */
+>>>>>>> b7a3367cdbb9f7faf1b2edfea6d214ccdf161852
     margin: 1vh;
 }
 
