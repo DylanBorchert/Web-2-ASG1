@@ -190,15 +190,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         divPaintingView.appendChild(paintViewClone);
 
+        let index = 1;
+        for(let c of foundPainting.JsonAnnotations.dominantColors){
+        console.log(paintViewClone.querySelector(`#colorContainer > #Colour_${index}`));
+        index++;
+        }
+
         returnButton.addEventListener("click", () => {
             containerGallery.style.display = "grid";
             containerView.style.display = "none";
         });
-      let index = 1;
-      for(let c of foundPainting.JsonAnnotations.dominantColors){
-      paintViewClone.querySelector(`#Colour#${index}`);
-      index++;
-      }
+      // let index = 1;
+      // for(let c of foundPainting.JsonAnnotations.dominantColors){
+      // console.log(paintViewClone.querySelector(`#colorContainer > #Colour_${index}`));
+      // index++;
+      // }
 
     }
   });
@@ -256,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
     paintingHeading.style.display = "none";
     paintingArea.style.display = "none";
     loadImage(imageURL).then(() => {
-      console.log(`image loaded: ${painting.ImageFileName}`);
+      //console.log(`image loaded: ${painting.ImageFileName}`);
         paintingLoader.style.display = "none";
         paintingHeading.style.display = "flex";
         paintingArea.style.display = "flex";
