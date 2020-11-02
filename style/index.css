@@ -34,7 +34,7 @@ body {
 .containerGallery {
     display: grid;
     grid-template-columns: 2fr 3fr 4fr;
-    grid-template-rows: 180px 58vh;
+    grid-template-rows: 185px 58vh;
     grid-gap: 10px;
 }
 
@@ -152,7 +152,7 @@ div#listOfGalleries {
 }
 
 #galleryInfo ul li {
-    padding: 8px 10px;
+    padding: 8px 8px;
 }
 
 #galleryInfo ul li:first-child {
@@ -253,7 +253,7 @@ div#listOfGalleries {
 
 #map {
     border-radius: 2.5px;
-    height: calc(180px + 57vh); /* 63 defualt */
+    height: calc(185px + 57vh); /* 63 defualt */
     margin: 1vh;
 }
 
