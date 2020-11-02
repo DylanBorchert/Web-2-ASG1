@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let paintingView = document.querySelector("#paintingView");
   const containerGallery = document.querySelector(".containerGallery");
   const containerView = document.querySelector(".containerView");
+  let largePainting = document.querySelector("#LargePainting");
 
   listLoader.style.display = "block";
   listOfGalleriesArea.style.display = "none";
@@ -178,22 +179,16 @@ document.addEventListener("DOMContentLoaded", function () {
         let baseImg = paintViewClone.querySelector("img");
         addFull(foundPainting, baseImg);
 
-        let bigImage = document.createElement("img");
-        let paintContainter = document.querySelector("#LargePainting");
-        console.log(paintContainter);
-        paintContainter.appendChild(bigImage);
-        addFull(foundPainting, bigImage);
-        bigImage.setAttribute("id", "image");
-        let closeButton = document.querySelector("#closeButton");
-        closeButton.textContent = "close";
-        closeButton.addEventListener("click", function(){
-          paintContainter.style.display = "none";
+        
+        
+        addFull(foundPainting, largePainting.querySelector("img"));
+
+        document.querySelector("#closeButton").addEventListener('click', function(){
+          largePainting.style.display = "none";
         });
 
-       // let paintViewClone.querySelector("#LargePainting > img");
-        //console.log();
         baseImg.addEventListener("click", function(e){
-          paintContainter.style.display = "block";
+          largePainting.style.display = "block";
         });
 
     
@@ -301,7 +296,6 @@ document.addEventListener("DOMContentLoaded", function () {
     paintingHeading.style.display = "none";
     paintingArea.style.display = "none";
     loadImage(imageURL).then(() => {
-      //console.log(`image loaded: ${painting.ImageFileName}`);
         paintingLoader.style.display = "none";
         paintingHeading.style.display = "flex";
         paintingArea.style.display = "flex";
@@ -310,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function addFull(painting, imageItem) {
-    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/w_800/art/paintings/${painting.ImageFileName}`;
+    imageURL = `https://res.cloudinary.com/funwebdev/image/upload/h_800/art/paintings/${painting.ImageFileName}`;
 
     imageItem.setAttribute("src", imageURL);
 
