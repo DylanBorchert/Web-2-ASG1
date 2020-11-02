@@ -597,10 +597,10 @@ background: var(--color-secondary-1);
 }
 
 #closeButton{
+    color: var(--color-primary-1);
+    padding: 5px;
     display: block;
     position: absolute;
-    width: 25px;
-    height: 25px;
     text-align: center;
     line-height: 10px;
     top: 25px;
@@ -611,7 +611,7 @@ background: var(--color-secondary-1);
 }
 
 #closeButton:hover {
-    color: #999;
+    color: var(--color-primary-2);
   cursor: pointer;
 }
 
